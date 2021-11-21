@@ -1,0 +1,98 @@
+<div class="row ms-5 me-5 mt-3">
+  <div class="col-lg-8 col-md-12">
+    <div class="tempForm">
+      <div id="carouselForm" class="text-center imageslider carousel carousel-dark">
+        
+        <div class="carousel-item active" data-bs-interval="99999999">
+          <form class="row g-3 needs-validation" novalidate>
+            <h2>Personal Info</h2>
+            
+            <div class="col-md-6">
+              <label class="form-label">First name</label>
+              <input type="text" class="form-control" id="validationCustom01" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Last name</label>
+              <input type="text" class="form-control" id="validationCustom02" required>
+            </div>
+            <div class="mb-12">
+              <label for="formFile" class="form-label">Profile Picture</label>
+              <input class="form-control" type="file" id="formFile">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone Number</label>
+              <input type="text" class="form-control" id="validationCustom03" required>
+            </div>
+            <div class="col-md-5">
+              <label class="form-label">City</label>
+              <input type="text" class="form-control" id="validationCustom03" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">State</label>
+              <select class="form-select" id="validationCustom04" required>
+                <option selected disabled Choose...></option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Zip</label>
+              <input type="text" class="form-control" id="validationCustom05" required>
+            </div>
+          </form>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="99999999">
+        <form class="row g-3 needs-validation" novalidate>
+          <h1>Profile</h1>
+          <div class="col-md-12 quill-editor">
+            <quill-editor class="quill-editor" [modules]="editorModules" [styles]="{height: '150px'}"></quill-editor>
+        </div>
+        </form>
+      </div>
+        
+        <div class="btn-pos mt-4">
+          <button class="btn-prev mt-4" type="button" data-bs-target="#carouselForm" data-bs-interval="none" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="btn-next mt-4" type="button" data-bs-target="#carouselForm" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="col-lg-4 col-md-12">
+    <div class="currentTemp smallScale">
+      <div class="row w-100">
+        <div class="col-lg-4 personalInfo">
+          <h1>PERSONAL INFO</h1>
+          <h2>Full Name</h2>
+          <p>Test User</p>
+          <h2>Email Adress</h2>
+          <p>test@gmail.com</p>
+          <h2>Telephone Number</h2>
+          <p>00112333455</p>
+          <h2>Address</h2>
+          <p>Test Address 37</p>
+          <h2>Postal Code</h2>
+          <p>51000</p>
+          <h2>Town & City/State</h2>
+          <p>Rijeka/Croatia</p>
+        </div>
+        <div class="col-lg-8"></div>
+      </div>
+    </div>
+  </div>
+</div>
