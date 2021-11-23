@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
+
+import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
+import {NgbConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-current-template',
@@ -6,24 +9,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./current-template.component.scss']
 })
 export class CurrentTemplateComponent implements OnInit {
+  profileEditor: string = ''
+  jobsEditor: string = ''
+  jobs: Array<number> = [1,2]
+  modules = {}
 
-  constructor() { }
+  constructor(ngbConfig: NgbConfig) {
+    this.modules = {
+      toolbar: [
+        ['bold', 'italic', 'underline'],
+      
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        
+        [{ 'indent': '-1' }, { 'indent': '+1' }], 
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+      
+        ['clean']
+      ]
+    }
+  }
 
   ngOnInit(): void {
   }
 
-  editorModules = {
-    toolbar: [
-      ['bold', 'italic', 'underline'],        // toggled buttons
-    
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    
-      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-      [{ 'font': [] }],
-      [{ 'align': [] }],
-    
-      ['clean']                                         // remove formatting button
-    ]
+  changedProfile(event: EditorChangeContent | EditorChangeSelection){
+    this.profileEditor = event['editor']['root']['innerHTML']
+  }
+
+  changedJobs(event: EditorChangeContent | EditorChangeSelection){
+    this.jobsEditor = event['editor']['root']['innerHTML']
   }
 }

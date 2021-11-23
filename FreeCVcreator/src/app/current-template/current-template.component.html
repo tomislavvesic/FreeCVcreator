@@ -52,18 +52,45 @@
         <form class="row g-3 needs-validation" novalidate>
           <h1>Profile</h1>
           <div class="col-md-12 quill-editor">
-            <quill-editor class="quill-editor" [modules]="editorModules" [styles]="{height: '150px'}"></quill-editor>
-        </div>
+            <quill-editor class="quill-editor"
+              [modules]="modules"
+              [styles]="{height: '150px'}"
+              (onEditorChanged)="changedProfile($event)">
+            </quill-editor>
+          </div>
+          <h1>Jobs</h1>
+          <button style="width: 100%;">Add Job</button>
+          <div class="row g-3" *ngFor="let job of jobs">
+            <div class="col-md-12">
+              <label class="form-label">Job Title</label>
+              <input type="text" class="form-control" id="validationCustom01" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Company name</label>
+              <input type="text" class="form-control" id="validationCustom01" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Date from/to</label>
+              <input type="text" class="form-control" id="validationCustom02" required>
+            </div>
+            <div class="col-md-12 quill-editor">
+              <quill-editor class="quill-editor"
+                [modules]="modules"
+                [styles]="{height: '150px'}"
+                (onEditorChanged)="changedJobs($event)">
+              </quill-editor>
+            </div>
+          </div>
         </form>
       </div>
         
         <div class="btn-pos mt-4">
           <button class="btn-prev mt-4" type="button" data-bs-target="#carouselForm" data-bs-interval="none" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="carousel-control-prev-icon"></span>
             <span class="visually-hidden">Previous</span>
           </button>
           <button class="btn-next mt-4" type="button" data-bs-target="#carouselForm" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="carousel-control-next-icon"></span>
             <span class="visually-hidden">Next</span>
           </button>
         </div>
@@ -91,7 +118,18 @@
           <h2>Town & City/State</h2>
           <p>Rijeka/Croatia</p>
         </div>
-        <div class="col-lg-8"></div>
+        <div class="col-lg-8 profileInfo">
+          <div>
+            <h1>PROFILE</h1>
+            <hr>
+            <p class="ql-editor" [innerHTML]="profileEditor"></p>
+          </div>
+          <div>
+            <h1>JOBS</h1>
+            <hr>
+            <p class="ql-editor" [innerHTML]="jobsEditor"></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

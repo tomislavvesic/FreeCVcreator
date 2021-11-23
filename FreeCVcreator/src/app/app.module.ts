@@ -6,7 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CvCarouselComponent } from './cv-carousel/cv-carousel.component';
 import { CurrentTemplateComponent } from './current-template/current-template.component';
-import { QuillModule } from 'ngx-quill'
+import { QuillModule } from 'ngx-quill';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { QuillModule } from 'ngx-quill'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
