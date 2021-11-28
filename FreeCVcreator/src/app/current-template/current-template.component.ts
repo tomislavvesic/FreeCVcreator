@@ -1,7 +1,10 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
-import {NgbConfig} from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs/operators'
+
 
 @Component({
   selector: 'app-current-template',
@@ -9,12 +12,25 @@ import {NgbConfig} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./current-template.component.scss']
 })
 export class CurrentTemplateComponent implements OnInit {
+  selected_template='cv_1'
+  form_profile_picture: any
+  display_profile_picture: string
+  storageRef:any
+  first_name: string
+  last_name: string
+  email:string
+  phone_number:string
+  city:string
+  state:string
+  zip_code:string
   profileEditor: string = ''
-  jobsEditor: string = ''
-  jobs: Array<number> = [1,2]
-  modules = {}
+  jobs: Array<any> = []
+  @ViewChild('profileTemplate') profileTemplate;
+  
+  modules:Object = {}
+  quillStyles:Object={}
 
-  constructor(ngbConfig: NgbConfig) {
+  constructor(private http: HttpClient, private fireStorage: AngularFireStorage) {
     this.modules = {
       toolbar: [
         ['bold', 'italic', 'underline'],
@@ -29,6 +45,12 @@ export class CurrentTemplateComponent implements OnInit {
         ['clean']
       ]
     }
+    this.quillStyles = {
+      "height":"150px",
+      "background-color":"rgba(33, 37, 41, 1)",
+      "color":"rgb(220, 220, 220)",
+      "quill-editor":"20px"
+    }
   }
 
   ngOnInit(): void {
@@ -38,7 +60,30 @@ export class CurrentTemplateComponent implements OnInit {
     this.profileEditor = event['editor']['root']['innerHTML']
   }
 
-  changedJobs(event: EditorChangeContent | EditorChangeSelection){
-    this.jobsEditor = event['editor']['root']['innerHTML']
+  changedJobs(event: EditorChangeContent | EditorChangeSelection, index){
+    let job = this.jobs[index]
+    job.jobsEditor = event['editor']['root']['innerHTML']
   }
+
+  addJob(){
+    this.jobs.push({"jobsEditor":null})
+  }
+
+  deleteJob(index){
+    this.jobs.splice(index,1)
+  }
+
+  onProfilePicture(event){
+    this.form_profile_picture = event.target.files[0]
+    let filePath = "/images/" + Math.random() + this.form_profile_picture.name
+    const fileRef = this.fireStorage.ref(filePath)
+    this.fireStorage.upload(filePath, this.form_profile_picture).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url)=>{
+          this.display_profile_picture = url
+        })
+      })
+    ).subscribe()
+  }
+
 }

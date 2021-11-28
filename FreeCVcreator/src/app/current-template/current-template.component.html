@@ -1,136 +1,167 @@
-<div class="row ms-5 me-5 mt-3">
-  <div class="col-lg-8 col-md-12">
+<div class="row ms-5 me-5 pt-3 pb-1 mt-3 mb-3 currentCVcontainer">
+  <div class="col-xl-7 col-lg-12 col-md-12">
     <div class="tempForm">
       <div id="carouselForm" class="text-center imageslider carousel carousel-dark">
         
         <div class="carousel-item active" data-bs-interval="99999999">
           <form class="row g-3 needs-validation" novalidate>
             <h2>Personal Info</h2>
-            
             <div class="col-md-6">
               <label class="form-label">First name</label>
-              <input type="text" class="form-control" id="validationCustom01" required>
+              <input type="text" class="form-control" name="first_name" [(ngModel)]="first_name" required>
             </div>
             <div class="col-md-6">
               <label class="form-label">Last name</label>
-              <input type="text" class="form-control" id="validationCustom02" required>
+              <input type="text" class="form-control" name="last_name" [(ngModel)]="last_name" required>
             </div>
             <div class="mb-12">
-              <label for="formFile" class="form-label">Profile Picture</label>
-              <input class="form-control" type="file" id="formFile">
+              <label class="form-label">Profile Picture</label>
+              <input class="form-control" type="file" accept="*.png.jpg" (change)="onProfilePicture($event)">
             </div>
             <div class="col-md-6">
               <label class="form-label">Email</label>
               <div class="input-group has-validation">
                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                <input type="text" class="form-control" name="email" [(ngModel)]="email" required>
               </div>
             </div>
             <div class="col-md-6">
               <label class="form-label">Phone Number</label>
-              <input type="text" class="form-control" id="validationCustom03" required>
+              <input type="text" class="form-control" name="phone_number" [(ngModel)]="phone_number" required>
             </div>
             <div class="col-md-5">
               <label class="form-label">City</label>
-              <input type="text" class="form-control" id="validationCustom03" required>
+              <input type="text" class="form-control" name="city" [(ngModel)]="city" required>
             </div>
             <div class="col-md-4">
               <label class="form-label">State</label>
-              <select class="form-select" id="validationCustom04" required>
-                <option selected disabled Choose...></option>
-                <option>...</option>
-              </select>
+              <input type="text" class="form-control" name="state" [(ngModel)]="state" required>
             </div>
             <div class="col-md-3">
-              <label class="form-label">Zip</label>
-              <input type="text" class="form-control" id="validationCustom05" required>
+              <label class="form-label">Zip Code</label>
+              <input type="text" class="form-control" name="zip_code" [(ngModel)]="zip_code">
             </div>
           </form>
         </div>
 
         <div class="carousel-item" data-bs-interval="99999999">
-        <form class="row g-3 needs-validation" novalidate>
-          <h1>Profile</h1>
-          <div class="col-md-12 quill-editor">
-            <quill-editor class="quill-editor"
-              [modules]="modules"
-              [styles]="{height: '150px'}"
-              (onEditorChanged)="changedProfile($event)">
-            </quill-editor>
-          </div>
-          <h1>Jobs</h1>
-          <button style="width: 100%;">Add Job</button>
-          <div class="row g-3" *ngFor="let job of jobs">
-            <div class="col-md-12">
-              <label class="form-label">Job Title</label>
-              <input type="text" class="form-control" id="validationCustom01" required>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Company name</label>
-              <input type="text" class="form-control" id="validationCustom01" required>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Date from/to</label>
-              <input type="text" class="form-control" id="validationCustom02" required>
-            </div>
-            <div class="col-md-12 quill-editor">
-              <quill-editor class="quill-editor"
+          <form class="row g-3 needs-validation" novalidate>
+            <div class="container profile-container" style="padding-top: 0px;">
+              <h2 class="profileEditor">Profile</h2>
+              <div class="col-md-12 quill-editor">
+                <quill-editor class="quill-editor"
                 [modules]="modules"
-                [styles]="{height: '150px'}"
-                (onEditorChanged)="changedJobs($event)">
+                [styles]="quillStyles"
+                (onEditorChanged)="changedProfile($event)">
               </quill-editor>
             </div>
           </div>
-        </form>
+          <h2>Jobs</h2>
+          <button class="jobBtn" (click)="addJob()">Add Job</button>
+          <div *ngFor="let job of jobs; index as i">
+            <div class="container profile-container jobs-container">
+              <button class="btn btn-danger" (click)="deleteJob(i)">X</button>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Job Title</label>
+                  <input type="text" class="form-control" id="validationCustom01" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Company Name</label>
+                  <input type="text" class="form-control" id="validationCustom01" required>
+                </div>
+                <div style="text-align: center;">
+                  <div class="row g-3">
+                    <div class="col-auto">
+                      <label for="inputPassword5" class="col-form-label">Started: </label>
+                    </div>
+                    <div class="col">
+                      <input type="date" id="inputPassword5" class="form-control text-center" placeholder="Started working in company" aria-label="First name">
+                    </div>
+                    <div class="col-auto">
+                      <label for="inputPassword6" class="col-form-label">Ended: </label>
+                    </div>
+                    <div class="col">
+                      <input type="date" id="inputPassword6" class="form-control text-center" placeholder="Stopped working at the company" aria-label="Last name">
+                    </div> 
+                  </div>
+                </div>
+                <div class="col-md-12 quill-editor">
+                  <quill-editor class="quill-editor"
+                  [modules]="modules"
+                  [styles]="quillStyles"
+                  (onEditorChanged)="changedJobs($event, i)">
+                </quill-editor>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    <div class="btn-pos mt-4">
+      <button class="btn-prev mt-5"
+      type="button"
+      data-bs-target="#carouselForm" 
+      data-bs-slide="prev"
+      data-bs-keyboard="false"
+      >
+      <span class="carousel-control-prev-icon"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="btn-next mt-4"
+    type="button"
+    data-bs-target="#carouselForm"
+    data-bs-slide="next"
+    data-bs-keyboard="false"
+    >
+    <span class="carousel-control-next-icon"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="col-xl-5 col-md-12">
+  <div class="currentTemp smallScale">
+    <div class="row w-100">
+      <div class="col-lg-4 personalInfo">
+        <h1>PERSONAL INFO</h1>
+        <img *ngIf="display_profile_picture" 
+          class="rounded d-block img-thumbnail w-50 mt-4"
+          [src]="display_profile_picture"
+          alt="Profile Picture"
+        >
+        <hr>
+        <h2>Full Name</h2>
+        <p>{{ first_name }} {{ last_name }}</p>
+        <h2>Email Adress</h2>
+        <p>{{ email }}</p>
+        <h2>Telephone Number</h2>
+        <p>{{ phone_number }}</p>
+        <h2>Town & City/State</h2>
+        <p>{{ city }}/{{ state }}</p>
+        <h2>Postal Code</h2>
+        <p>{{ zip_code }}</p>
       </div>
-        
-        <div class="btn-pos mt-4">
-          <button class="btn-prev mt-4" type="button" data-bs-target="#carouselForm" data-bs-interval="none" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="btn-next mt-4" type="button" data-bs-target="#carouselForm" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+      <div class="col-lg-8 profileInfo" #profileTemplate>
+        <div>
+          <h1>PROFILE</h1>
+          <hr>
+          <p class="ql-editor" [innerHTML]="profileEditor"></p>
+        </div>
+        <div *ngIf="jobs.length != 0">
+          <h1>JOBS</h1>
+          <div *ngFor="let job of jobs">
+            <hr>
+            <p class="ql-editor" [innerHTML]="job.jobsEditor"></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
-  
-  
-  <div class="col-lg-4 col-md-12">
-    <div class="currentTemp smallScale">
-      <div class="row w-100">
-        <div class="col-lg-4 personalInfo">
-          <h1>PERSONAL INFO</h1>
-          <h2>Full Name</h2>
-          <p>Test User</p>
-          <h2>Email Adress</h2>
-          <p>test@gmail.com</p>
-          <h2>Telephone Number</h2>
-          <p>00112333455</p>
-          <h2>Address</h2>
-          <p>Test Address 37</p>
-          <h2>Postal Code</h2>
-          <p>51000</p>
-          <h2>Town & City/State</h2>
-          <p>Rijeka/Croatia</p>
-        </div>
-        <div class="col-lg-8 profileInfo">
-          <div>
-            <h1>PROFILE</h1>
-            <hr>
-            <p class="ql-editor" [innerHTML]="profileEditor"></p>
-          </div>
-          <div>
-            <h1>JOBS</h1>
-            <hr>
-            <p class="ql-editor" [innerHTML]="jobsEditor"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
 </div>
