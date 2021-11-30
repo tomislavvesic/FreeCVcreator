@@ -4,6 +4,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators'
+import { TemplateTransportService } from '../services/template-transport.service';
+import { TemplateOneComponent } from './templates/template-one/template-one.component';
 
 
 @Component({
@@ -12,7 +14,6 @@ import { finalize } from 'rxjs/operators'
   styleUrls: ['./current-template.component.scss']
 })
 export class CurrentTemplateComponent implements OnInit {
-  selected_template='cv_1'
   form_profile_picture: any
   display_profile_picture: string
   storageRef:any
@@ -25,12 +26,33 @@ export class CurrentTemplateComponent implements OnInit {
   zip_code:string
   profileEditor: string = ''
   jobs: Array<any> = []
-  @ViewChild('profileTemplate') profileTemplate;
+  
   
   modules:Object = {}
   quillStyles:Object={}
 
-  constructor(private http: HttpClient, private fireStorage: AngularFireStorage) {
+  currentComponent=TemplateOneComponent
+
+  constructor(
+    private http: HttpClient,
+    private fireStorage: AngularFireStorage,
+    public tps: TemplateTransportService
+    ) {
+    this.tps.datatransport = {
+      form_profile_picture: this.form_profile_picture,
+      display_profile_picture: this.display_profile_picture,
+      storageRef: this.storageRef,
+      first_name: this.first_name,
+      last_name: this.last_name,
+      email: this.email,
+      phone_number: this.phone_number,
+      city: this.city,
+      state: this.state,
+      zip_code: this.zip_code,
+      profileEditor: this.profileEditor,
+      jobs: this.jobs,
+    }
+
     this.modules = {
       toolbar: [
         ['bold', 'italic', 'underline'],
@@ -63,6 +85,7 @@ export class CurrentTemplateComponent implements OnInit {
   changedJobs(event: EditorChangeContent | EditorChangeSelection, index){
     let job = this.jobs[index]
     job.jobsEditor = event['editor']['root']['innerHTML']
+    console.log(this.tps.datatransport)
   }
 
   addJob(){
@@ -85,5 +108,4 @@ export class CurrentTemplateComponent implements OnInit {
       })
     ).subscribe()
   }
-
 }
