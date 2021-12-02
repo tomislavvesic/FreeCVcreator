@@ -12,7 +12,6 @@ import { finalize } from 'rxjs/operators'
   styleUrls: ['./current-template.component.scss']
 })
 export class CurrentTemplateComponent implements OnInit {
-  selected_template='cv_1'
   form_profile_picture: any
   display_profile_picture: string
   storageRef:any
@@ -25,7 +24,6 @@ export class CurrentTemplateComponent implements OnInit {
   zip_code:string
   profileEditor: string = ''
   jobs: Array<any> = []
-  @ViewChild('profileTemplate') profileTemplate;
   
   modules:Object = {}
   quillStyles:Object={}
