@@ -1,18 +1,21 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators'
+import { TemplateTransportService } from '../services/template-transport.service';
 
 
 @Component({
   selector: 'app-current-template',
+  styleUrls: ['./current-template.component.scss'],
   templateUrl: './current-template.component.html',
-  styleUrls: ['./current-template.component.scss']
+  encapsulation: ViewEncapsulation.None,
+  
 })
 export class CurrentTemplateComponent implements OnInit {
-  selected_template='cv_1'
+  selectedTemplate=this.templatetp.templateTransport
   form_profile_picture: any
   display_profile_picture: string
   storageRef:any
@@ -25,12 +28,14 @@ export class CurrentTemplateComponent implements OnInit {
   zip_code:string
   profileEditor: string = ''
   jobs: Array<any> = []
-  @ViewChild('profileTemplate') profileTemplate;
   
   modules:Object = {}
   quillStyles:Object={}
 
-  constructor(private http: HttpClient, private fireStorage: AngularFireStorage) {
+  constructor(private http: HttpClient,
+    private fireStorage: AngularFireStorage,
+    public templatetp: TemplateTransportService
+    ){
     this.modules = {
       toolbar: [
         ['bold', 'italic', 'underline'],
@@ -86,4 +91,8 @@ export class CurrentTemplateComponent implements OnInit {
     ).subscribe()
   }
 
+  addcity(event){
+    console.log(event)
+    this.templatetp.city = this.city
+  }
 }

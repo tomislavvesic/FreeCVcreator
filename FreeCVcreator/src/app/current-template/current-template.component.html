@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-5">
               <label class="form-label">City</label>
-              <input type="text" class="form-control" name="city" [(ngModel)]="city" required>
+              <input type="text" class="form-control" name="city" (keydown)='addcity($event)' [(ngModel)]="city" required>
             </div>
             <div class="col-md-4">
               <label class="form-label">State</label>
@@ -125,43 +125,7 @@
 
 
 
-<div class="col-xl-5 col-md-12">
-  <div class="currentTemp smallScale">
-    <div class="row w-100">
-      <div class="col-lg-4 personalInfo">
-        <h1>PERSONAL INFO</h1>
-        <img *ngIf="display_profile_picture" 
-          class="rounded d-block img-thumbnail w-50 mt-4"
-          [src]="display_profile_picture"
-          alt="Profile Picture"
-        >
-        <hr>
-        <h2>Full Name</h2>
-        <p>{{ first_name }} {{ last_name }}</p>
-        <h2>Email Adress</h2>
-        <p>{{ email }}</p>
-        <h2>Telephone Number</h2>
-        <p>{{ phone_number }}</p>
-        <h2>Town & City/State</h2>
-        <p>{{ city }}/{{ state }}</p>
-        <h2>Postal Code</h2>
-        <p>{{ zip_code }}</p>
-      </div>
-      <div class="col-lg-8 profileInfo" #profileTemplate>
-        <div>
-          <h1>PROFILE</h1>
-          <hr>
-          <p class="ql-editor" [innerHTML]="profileEditor"></p>
-        </div>
-        <div *ngIf="jobs.length != 0">
-          <h1>JOBS</h1>
-          <div *ngFor="let job of jobs">
-            <hr>
-            <p class="ql-editor" [innerHTML]="job.jobsEditor"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div *ngIf="selectedTemplate" class="col-xl-5 col-md-12">
+  <div class="currentTemp smallScale" [innerHTML]="selectedTemplate"></div>
 </div>
 </div>

@@ -11,13 +11,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { AppComponent } from './app.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage'
-import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireModule } from '@angular/fire/compat';
+import { TemplatesComponent } from './current-template/templates/templates.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     CvCarouselComponent,
-    CurrentTemplateComponent
+    CurrentTemplateComponent,
+    TemplatesComponent
   ],
   imports: [
     BrowserModule,

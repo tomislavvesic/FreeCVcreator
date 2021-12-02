@@ -2,6 +2,7 @@
     background-color: rgba(33, 37, 41, 0.9);
     border: 1px solid black;
     border-radius: 20px;
+    position: relative;
 }
 
 input{
@@ -18,7 +19,7 @@ input{
     text-align: center;
     padding:15px 20px;
     margin:auto;
-    min-height: 600px;
+    min-height: 500px;
 
     h2 {
         margin-bottom: 25px;
@@ -94,6 +95,7 @@ input{
 }
 
 .currentTemp{
+    display: flex;
     margin:auto;
     height:29.7cm;
     width:21cm;
@@ -103,12 +105,11 @@ input{
 }
 
 .smallScale {
-    display: flex;
-    transform: scale(0.53);
-    -ms-transform: scale(0.53); /* IE 9 */
-    -webkit-transform: scale(0.53); /* Safari and Chrome */
-    -o-transform: scale(0.53); /* Opera */
-    -moz-transform: scale(0.53); /* Firefox */
+    transform: scale(0.47);
+    -ms-transform: scale(0.47); /* IE 7 */
+    -webkit-transform: scale(0.47); /* Safari and Chrome */
+    -o-transform: scale(0.47); /* Opera */
+    -moz-transform: scale(0.47); /* Firefox */
     transform-origin: top left;
 }
 
@@ -174,13 +175,13 @@ input{
       }
 }
 
-@media only screen and (min-width: 1300px) {
+@media only screen and (min-width: 1200px) {
     .currentTemp {
       position: fixed;
     }
   }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1200px) {
     .currentTemp {
         display: none;
     }
