@@ -38,21 +38,20 @@ export class CurrentTemplateComponent implements OnInit {
     private fireStorage: AngularFireStorage,
     public tps: TemplateTransportService
     ) {
-    this.tps.datatransport = {
-      form_profile_picture: this.form_profile_picture,
-      display_profile_picture: this.display_profile_picture,
-      storageRef: this.storageRef,
-      first_name: this.first_name,
-      last_name: this.last_name,
-      email: this.email,
-      phone_number: this.phone_number,
-      city: this.city,
-      state: this.state,
-      zip_code: this.zip_code,
-      profileEditor: this.profileEditor,
-      jobs: this.jobs,
-    }
-
+    // this.tps.datatransport = {
+    //   form_profile_picture: this.form_profile_picture,
+    //   display_profile_picture: this.display_profile_picture,
+    //   storageRef: this.storageRef,
+    //   first_name: this.first_name,
+    //   last_name: this.last_name,
+    //   email: this.email,
+    //   phone_number: this.phone_number,
+    //   city: this.city,
+    //   state: this.state,
+    //   zip_code: this.zip_code,
+    //   profileEditor: this.profileEditor,
+    //   jobs: this.jobs,
+    // }
     this.modules = {
       toolbar: [
         ['bold', 'italic', 'underline'],
