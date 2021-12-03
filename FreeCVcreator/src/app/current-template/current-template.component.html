@@ -46,7 +46,7 @@
 
         <div class="carousel-item" data-bs-interval="99999999">
           <form class="row g-3 needs-validation" novalidate>
-            <div class="container profile-container" style="padding-top: 0px;">
+            <div class="profile-container" style="padding-top: 0px;">
               <h2 class="profileEditor">Profile</h2>
               <div class="col-md-12 quill-editor">
                 <quill-editor class="quill-editor"
@@ -125,7 +125,22 @@
 
 
 
-<div class="col-xl-5 col-md-12">
-  <app-template-one></app-template-one>
-</div>
+  <div class="col-xl-5 col-md-12">
+    <!-- <button class="btn btn-success w-50 d-block m-auto">Choose different template</button> -->
+    <app-template-one
+    *ngIf="selectedTemp == 'temp1'"
+    [form_profile_picture]="form_profile_picture"
+    [display_profile_picture]="display_profile_picture"
+    [storageRef]="storageRef"
+    [first_name]="first_name"
+    [last_name]="last_name"
+    [email]="email"
+    [phone_number]="phone_number"
+    [city]="city"
+    [state]="state"
+    [zip_code]="zip_code"
+    [profileEditor]="profileEditor"
+    [jobs]="jobs">
+    </app-template-one>
+  </div>
 </div>

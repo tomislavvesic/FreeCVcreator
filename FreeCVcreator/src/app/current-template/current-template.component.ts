@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
@@ -12,6 +12,8 @@ import { finalize } from 'rxjs/operators'
   styleUrls: ['./current-template.component.scss']
 })
 export class CurrentTemplateComponent implements OnInit {
+  selectedTemp = 'temp1'
+  
   form_profile_picture: any
   display_profile_picture: string
   storageRef:any
@@ -24,7 +26,7 @@ export class CurrentTemplateComponent implements OnInit {
   zip_code:string
   profileEditor: string = ''
   jobs: Array<any> = []
-  
+
   modules:Object = {}
   quillStyles:Object={}
 
@@ -83,5 +85,4 @@ export class CurrentTemplateComponent implements OnInit {
       })
     ).subscribe()
   }
-
 }

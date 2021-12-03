@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-template-one',
@@ -6,22 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./template-one.component.scss']
 })
 export class TemplateOneComponent implements OnInit {
-  form_profile_picture: any
-  display_profile_picture: string
-  storageRef:any
-  first_name: string
-  last_name: string
-  email:string
-  phone_number:string
-  city:string
-  state:string
-  zip_code:string
-  profileEditor: string = ''
-  jobs: Array<any> = []
+  @Input() form_profile_picture: any
+  @Input() display_profile_picture: string
+  @Input() storageRef:any
+  @Input() first_name: string
+  @Input() last_name: string
+  @Input() email:string
+  @Input() phone_number:string
+  @Input() city;
+  @Input() state:string
+  @Input() zip_code:string
+  @Input() profileEditor: string = ''
+  @Input() jobs: Array<any> = []
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
