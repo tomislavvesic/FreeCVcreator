@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-template-one',
@@ -6,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./template-one.component.scss']
 })
 export class TemplateOneComponent implements OnInit {
+  @ViewChild('htmlData') htmlData:ElementRef;
+
   @Input() form_profile_picture: any
   @Input() display_profile_picture: string
   @Input() storageRef:any
@@ -22,5 +26,22 @@ export class TemplateOneComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public openPDF():void {
+    let DATA = document.getElementById('htmlData');
+      
+    html2canvas(DATA).then(canvas => {
+        
+        let fileWidth = 210;
+        let fileHeight = canvas.height * fileWidth / canvas.width;
+        
+        const FILEURI = canvas.toDataURL('image/png')
+        let PDF = new jsPDF('p', 'mm', 'a4');
+        let position = 0;
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+        
+        PDF.save('angular-demo.pdf');
+    });     
   }
 }

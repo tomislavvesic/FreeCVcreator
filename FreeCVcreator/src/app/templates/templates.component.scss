@@ -1,0 +1,12 @@
+.scale {
+    display: block;
+    transform: scale(0.95);
+    -ms-transform: scale(0.95); /* IE 9 */
+    -webkit-transform: scale(0.95); /* Safari and Chrome */
+    -o-transform: scale(0.95); /* Opera */
+    -moz-transform: scale(0.95); /* Firefox */
+}
+
+.row{
+    margin-bottom:580px
+}
