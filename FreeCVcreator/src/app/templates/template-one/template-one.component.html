@@ -26,10 +26,15 @@
         <p class="ql-editor" [innerHTML]="profileEditor"></p>
       </div>
       <div *ngIf="jobs.length != 0">
-        <h1>JOBS</h1>
+        <b><h1>JOBS</h1></b>
+        <hr style="margin-bottom: 30px;">
         <div *ngFor="let job of jobs">
-          <hr>
-          <h3 [innerHTML]="job.jobTitle"></h3>
+          <b><h5 [innerHTML]="job.jobTitle"></h5></b>
+          <hr style="margin-bottom: 10px; width: 50%;">
+          <span>
+            <h6 [innerHTML]="job.companyName" style="display: inline;"></h6>
+            / <i>{{job.fromDate | date:'M/d/yy'}} - {{ job.toDate | date:'M/d/yy'}}</i>
+          </span>
           <p class="ql-editor" [innerHTML]="job.jobsEditor"></p>
         </div>
       </div>

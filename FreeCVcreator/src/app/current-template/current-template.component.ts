@@ -67,7 +67,13 @@ export class CurrentTemplateComponent implements OnInit {
   }
 
   addJob(){
-    this.jobs.push({"jobsEditor":null, "jobTitle":null})
+    this.jobs.push({
+      "jobTitle": null,
+      "companyName": null,
+      "fromDate": null,
+      "toDate": null,
+      "jobsEditor": null
+    })
   }
 
   deleteJob(index){

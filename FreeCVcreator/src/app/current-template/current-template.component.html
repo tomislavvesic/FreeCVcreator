@@ -21,7 +21,7 @@
             <div class="col-md-6">
               <label class="form-label">Email</label>
               <div class="input-group has-validation">
-                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <span class="input-group-text">@</span>
                 <input type="text" class="form-control" name="email" [(ngModel)]="email" required>
               </div>
             </div>
@@ -74,27 +74,33 @@
                 <div class="col-md-6">
                   <label class="form-label">Company Name</label>
                   <input type="text"
+                  value="John"
+                  name="John"
                   class="form-control"
+                  name="job.companyName"
+                  [(ngModel)]="job.companyName"
                   required>
                 </div>
                 <div style="text-align: center;">
                   <div class="row g-3">
                     <div class="col-auto">
-                      <label for="inputPassword5" class="col-form-label">Started: </label>
+                      <label class="col-form-label">Started: </label>
                     </div>
                     <div class="col">
                       <input type="date"
                       class="form-control text-center"
-                      placeholder="Started working in company" aria
-                      label="First name">
+                      name="job.fromDate"
+                      [(ngModel)]="job.fromDate"
+                      aria-label="First name">
                     </div>
                     <div class="col-auto">
-                      <label for="inputPassword6" class="col-form-label">Ended: </label>
+                      <label class="col-form-label">Ended: </label>
                     </div>
                     <div class="col">
                       <input type="date"
                       class="form-control text-center"
-                      placeholder="Stopped working at the company"
+                      name="job.toDate"
+                      [(ngModel)]="job.toDate"
                       aria-label="Last name">
                     </div> 
                   </div>
