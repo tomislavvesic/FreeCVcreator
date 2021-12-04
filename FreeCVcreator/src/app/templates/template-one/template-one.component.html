@@ -1,9 +1,8 @@
 <div class="currentTemp smallScale" id="htmlData">
   <div class="row w-100">
     <div class="col-lg-4 personalInfo">
-      <h1>PERSONAL INFO</h1>
       <img *ngIf="display_profile_picture" 
-      class="rounded d-block img-thumbnail w-50 mt-4"
+      class="rounded d-block img-thumbnail w-50 mt-4 rounded-circle"
       [src]="display_profile_picture"
       alt="Profile Picture"
       >
@@ -32,8 +31,8 @@
           <b><h5 [innerHTML]="job.jobTitle"></h5></b>
           <hr style="margin-bottom: 10px; width: 50%;">
           <span>
-            <h6 [innerHTML]="job.companyName" style="display: inline;"></h6>
-            / <i>{{job.fromDate | date:'M/d/yy'}} - {{ job.toDate | date:'M/d/yy'}}</i>
+            <b><h6 [innerHTML]="job.companyName" style="display: inline;"></h6>
+            / </b> <i>{{job.fromDate | date:'M/d/y'}}-{{ job.toDate | date:'M/d/y'}}</i>
           </span>
           <p class="ql-editor" [innerHTML]="job.jobsEditor"></p>
         </div>

@@ -12,7 +12,6 @@ export class TemplateOneComponent implements OnInit {
 
   @Input() form_profile_picture: any
   @Input() display_profile_picture: string
-  @Input() storageRef:any
   @Input() first_name: string
   @Input() last_name: string
   @Input() email:string

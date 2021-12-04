@@ -16,7 +16,6 @@ export class CurrentTemplateComponent implements OnInit {
   
   form_profile_picture: any
   display_profile_picture: string
-  storageRef:any
   first_name: string
   last_name: string
   email:string
@@ -68,12 +67,9 @@ export class CurrentTemplateComponent implements OnInit {
 
   addJob(){
     this.jobs.push({
-      "jobTitle": null,
-      "companyName": null,
-      "fromDate": null,
-      "toDate": null,
       "jobsEditor": null
     })
+    console.log(this.jobs)
   }
 
   deleteJob(index){
