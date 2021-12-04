@@ -1,12 +1,18 @@
 .scale {
     display: block;
-    transform: scale(0.95);
-    -ms-transform: scale(0.95); /* IE 9 */
-    -webkit-transform: scale(0.95); /* Safari and Chrome */
-    -o-transform: scale(0.95); /* Opera */
-    -moz-transform: scale(0.95); /* Firefox */
+    transform: scale(0.97);
+    -ms-transform: scale(0.97); /* IE 9 */
+    -webkit-transform: scale(0.97); /* Safari and Chrome */
+    -o-transform: scale(0.97); /* Opera */
+    -moz-transform: scale(0.97); /* Firefox */
 }
 
-.row{
-    margin-bottom:580px
+.temp-height{
+    margin-bottom:610px
+}
+
+@media only screen and (max-width: 1200px) {
+    .currentTemp {
+        display: none;
+    }
 }

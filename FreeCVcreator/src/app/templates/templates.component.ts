@@ -12,4 +12,7 @@ export class TemplatesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  chooseTemplate(event){
+    console.log(event)
+  }
 }

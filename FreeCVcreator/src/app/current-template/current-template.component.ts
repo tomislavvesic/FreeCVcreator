@@ -24,6 +24,7 @@ export class CurrentTemplateComponent implements OnInit {
   city:string
   state:string
   zip_code:string
+
   profileEditor: string = ''
   jobs: Array<any> = []
 
@@ -66,7 +67,7 @@ export class CurrentTemplateComponent implements OnInit {
   }
 
   addJob(){
-    this.jobs.push({"jobsEditor":null})
+    this.jobs.push({"jobsEditor":null, "jobTitle":null})
   }
 
   deleteJob(index){

@@ -29,6 +29,7 @@
         <h1>JOBS</h1>
         <div *ngFor="let job of jobs">
           <hr>
+          <h3 [innerHTML]="job.jobTitle"></h3>
           <p class="ql-editor" [innerHTML]="job.jobsEditor"></p>
         </div>
       </div>
