@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TemplateRelatedService } from '../services/template-related.service';
 
 @Component({
   selector: 'app-templates',
@@ -7,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplatesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private templateService: TemplateRelatedService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  chooseTemplate(event){
-    console.log(event)
+  chooseTemp1(event){
+    this.templateService.chooseTemplate = 'temp1'
   }
 }

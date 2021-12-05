@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators'
+import { TemplateRelatedService } from '../services/template-related.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { finalize } from 'rxjs/operators'
   styleUrls: ['./current-template.component.scss']
 })
 export class CurrentTemplateComponent implements OnInit {
-  selectedTemp = 'temp1'
+  selectedTemp = this.templateService.chooseTemplate
   
   form_profile_picture: any
   display_profile_picture: string
@@ -30,7 +31,11 @@ export class CurrentTemplateComponent implements OnInit {
   modules:Object = {}
   quillStyles:Object={}
 
-  constructor(private http: HttpClient, private fireStorage: AngularFireStorage) {
+  constructor(
+    private http: HttpClient,
+    private fireStorage: AngularFireStorage,
+    public templateService: TemplateRelatedService
+    ) {
     this.modules = {
       toolbar: [
         ['bold', 'italic', 'underline'],
@@ -69,7 +74,6 @@ export class CurrentTemplateComponent implements OnInit {
     this.jobs.push({
       "jobsEditor": null
     })
-    console.log(this.jobs)
   }
 
   deleteJob(index){
