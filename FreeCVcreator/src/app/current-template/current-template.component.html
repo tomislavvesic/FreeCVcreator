@@ -5,7 +5,12 @@
         
         <div class="carousel-item active" data-bs-interval="99999999">
           <form class="row g-3 needs-validation" novalidate>
-            <h2>Personal Info</h2>
+            <span>
+              <h2>Personal Info</h2>
+              <button class="btn btn-outline-success w-50 mt-2 mb-2" (click)="onExportPDF()">
+                Export CV as PDF
+              </button>
+            </span>
             <div class="col-md-6">
               <label class="form-label">First name</label>
               <input type="text" class="form-control" name="first_name" [(ngModel)]="first_name" required>
@@ -46,8 +51,12 @@
 
         <div class="carousel-item" data-bs-interval="99999999">
           <form class="row g-3 needs-validation" novalidate>
-            <div class="profile-container" style="padding-top: 0px;">
-              <h2 class="profileEditor">Profile</h2>
+            <span>
+              <h2>Profile Info</h2>
+              <button class="btn btn-outline-success w-50 mt-2 mb-2" (click)="onExportPDF()">
+                Export CV as PDF</button>
+            </span>
+            <div class="profile-container">
               <div class="col-md-12 quill-editor">
                 <quill-editor class="quill-editor"
                 [modules]="modules"
@@ -56,7 +65,7 @@
               </quill-editor>
             </div>
           </div>
-          <h2>Jobs</h2>
+          <h2 class="mt-4">Jobs</h2>
           <button class="jobBtn" (click)="addJob()">Add Job</button>
 
           <div *ngFor="let job of jobs; index as i">
@@ -145,7 +154,7 @@
 
 
   <div class="col-xl-5 col-md-12">
-    <app-template-one
+    <app-template-one #selectedTemplate
     *ngIf="selectedTemp == 'temp1'"
     [form_profile_picture]="form_profile_picture"
     [display_profile_picture]="display_profile_picture"

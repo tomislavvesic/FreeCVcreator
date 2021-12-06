@@ -5,6 +5,7 @@ import { ElementRef, Injectable } from '@angular/core';
 })
 export class TemplateRelatedService {
   chooseTemplate: string = ''
+  templatePDF
 
   constructor() { }
 }

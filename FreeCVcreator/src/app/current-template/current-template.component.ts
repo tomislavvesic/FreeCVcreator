@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
@@ -25,6 +27,7 @@ export class CurrentTemplateComponent implements OnInit {
   state:string
   zip_code:string
 
+  @ViewChild('selectedTemplate') selectedTemplate;
   profileEditor: string = ''
   jobs: Array<any> = []
 
@@ -32,7 +35,6 @@ export class CurrentTemplateComponent implements OnInit {
   quillStyles:Object={}
 
   constructor(
-    private http: HttpClient,
     private fireStorage: AngularFireStorage,
     public templateService: TemplateRelatedService
     ) {
@@ -91,5 +93,21 @@ export class CurrentTemplateComponent implements OnInit {
         })
       })
     ).subscribe()
+  }
+
+  onExportPDF():void {
+    let DATA = this.selectedTemplate.selectedTemplate.nativeElement;
+
+    html2canvas(DATA).then(canvas => {
+        let fileWidth = 210;
+        let fileHeight = canvas.height * fileWidth / canvas.width;
+        
+        const FILEURI = canvas.toDataURL('image/png')
+        let PDF = new jsPDF('p', 'mm', 'a4');
+        let position = 0;
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+        
+        PDF.save('CV.pdf');
+    });   
   }
 }
