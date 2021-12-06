@@ -5,7 +5,12 @@
         
         <div class="carousel-item active" data-bs-interval="99999999">
           <form class="row g-3 needs-validation" novalidate>
-            <h2>Personal Info</h2>
+            <span>
+              <h2>Personal Info</h2>
+              <button class="btn btn-outline-success w-50 mt-2 mb-2" (click)="onExportPDF()">
+                Export CV as PDF
+              </button>
+            </span>
             <div class="col-md-6">
               <label class="form-label">First name</label>
               <input type="text" class="form-control" name="first_name" [(ngModel)]="first_name" required>
@@ -21,7 +26,7 @@
             <div class="col-md-6">
               <label class="form-label">Email</label>
               <div class="input-group has-validation">
-                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <span class="input-group-text">@</span>
                 <input type="text" class="form-control" name="email" [(ngModel)]="email" required>
               </div>
             </div>
@@ -46,8 +51,12 @@
 
         <div class="carousel-item" data-bs-interval="99999999">
           <form class="row g-3 needs-validation" novalidate>
-            <div class="container profile-container" style="padding-top: 0px;">
-              <h2 class="profileEditor">Profile</h2>
+            <span>
+              <h2>Profile Info</h2>
+              <button class="btn btn-outline-success w-50 mt-2 mb-2" (click)="onExportPDF()">
+                Export CV as PDF</button>
+            </span>
+            <div class="profile-container">
               <div class="col-md-12 quill-editor">
                 <quill-editor class="quill-editor"
                 [modules]="modules"
@@ -56,33 +65,52 @@
               </quill-editor>
             </div>
           </div>
-          <h2>Jobs</h2>
+          <h2 class="mt-4">Jobs</h2>
           <button class="jobBtn" (click)="addJob()">Add Job</button>
+
           <div *ngFor="let job of jobs; index as i">
             <div class="container profile-container jobs-container">
               <button class="btn btn-danger" (click)="deleteJob(i)">X</button>
               <div class="row g-3">
                 <div class="col-md-6">
                   <label class="form-label">Job Title</label>
-                  <input type="text" class="form-control" id="validationCustom01" required>
+                  <input type="text"
+                  class="form-control"
+                  name="job.jobTitle"
+                  [(ngModel)]="job.jobTitle"
+                  required>
                 </div>
                 <div class="col-md-6">
                   <label class="form-label">Company Name</label>
-                  <input type="text" class="form-control" id="validationCustom01" required>
+                  <input type="text"
+                  value="John"
+                  name="John"
+                  class="form-control"
+                  name="job.companyName"
+                  [(ngModel)]="job.companyName"
+                  required>
                 </div>
                 <div style="text-align: center;">
                   <div class="row g-3">
                     <div class="col-auto">
-                      <label for="inputPassword5" class="col-form-label">Started: </label>
+                      <label class="col-form-label">Started: </label>
                     </div>
                     <div class="col">
-                      <input type="date" id="inputPassword5" class="form-control text-center" placeholder="Started working in company" aria-label="First name">
+                      <input type="date"
+                      class="form-control text-center"
+                      name="job.fromDate"
+                      [(ngModel)]="job.fromDate"
+                      aria-label="First name">
                     </div>
                     <div class="col-auto">
-                      <label for="inputPassword6" class="col-form-label">Ended: </label>
+                      <label class="col-form-label">Ended: </label>
                     </div>
                     <div class="col">
-                      <input type="date" id="inputPassword6" class="form-control text-center" placeholder="Stopped working at the company" aria-label="Last name">
+                      <input type="date"
+                      class="form-control text-center"
+                      name="job.toDate"
+                      [(ngModel)]="job.toDate"
+                      aria-label="Last name">
                     </div> 
                   </div>
                 </div>
@@ -91,13 +119,13 @@
                   [modules]="modules"
                   [styles]="quillStyles"
                   (onEditorChanged)="changedJobs($event, i)">
-                </quill-editor>
+                  </quill-editor>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
     
     <div class="btn-pos mt-4">
       <button class="btn-prev mt-5"
@@ -125,43 +153,20 @@
 
 
 
-<div class="col-xl-5 col-md-12">
-  <div class="currentTemp smallScale">
-    <div class="row w-100">
-      <div class="col-lg-4 personalInfo">
-        <h1>PERSONAL INFO</h1>
-        <img *ngIf="display_profile_picture" 
-          class="rounded d-block img-thumbnail w-50 mt-4"
-          [src]="display_profile_picture"
-          alt="Profile Picture"
-        >
-        <hr>
-        <h2>Full Name</h2>
-        <p>{{ first_name }} {{ last_name }}</p>
-        <h2>Email Adress</h2>
-        <p>{{ email }}</p>
-        <h2>Telephone Number</h2>
-        <p>{{ phone_number }}</p>
-        <h2>Town & City/State</h2>
-        <p>{{ city }}/{{ state }}</p>
-        <h2>Postal Code</h2>
-        <p>{{ zip_code }}</p>
-      </div>
-      <div class="col-lg-8 profileInfo" #profileTemplate>
-        <div>
-          <h1>PROFILE</h1>
-          <hr>
-          <p class="ql-editor" [innerHTML]="profileEditor"></p>
-        </div>
-        <div *ngIf="jobs.length != 0">
-          <h1>JOBS</h1>
-          <div *ngFor="let job of jobs">
-            <hr>
-            <p class="ql-editor" [innerHTML]="job.jobsEditor"></p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="col-xl-5 col-md-12">
+    <app-template-one #selectedTemplate
+    *ngIf="selectedTemp == 'temp1'"
+    [form_profile_picture]="form_profile_picture"
+    [display_profile_picture]="display_profile_picture"
+    [first_name]="first_name"
+    [last_name]="last_name"
+    [email]="email"
+    [phone_number]="phone_number"
+    [city]="city"
+    [state]="state"
+    [zip_code]="zip_code"
+    [profileEditor]="profileEditor"
+    [jobs]="jobs">
+    </app-template-one>
   </div>
-</div>
 </div>

@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators'
+import { TemplateRelatedService } from '../services/template-related.service';
 
 
 @Component({
@@ -12,10 +15,10 @@ import { finalize } from 'rxjs/operators'
   styleUrls: ['./current-template.component.scss']
 })
 export class CurrentTemplateComponent implements OnInit {
-  selected_template='cv_1'
+  selectedTemp = this.templateService.chooseTemplate
+  
   form_profile_picture: any
   display_profile_picture: string
-  storageRef:any
   first_name: string
   last_name: string
   email:string
@@ -23,14 +26,18 @@ export class CurrentTemplateComponent implements OnInit {
   city:string
   state:string
   zip_code:string
+
+  @ViewChild('selectedTemplate') selectedTemplate;
   profileEditor: string = ''
   jobs: Array<any> = []
-  @ViewChild('profileTemplate') profileTemplate;
-  
+
   modules:Object = {}
   quillStyles:Object={}
 
-  constructor(private http: HttpClient, private fireStorage: AngularFireStorage) {
+  constructor(
+    private fireStorage: AngularFireStorage,
+    public templateService: TemplateRelatedService
+    ) {
     this.modules = {
       toolbar: [
         ['bold', 'italic', 'underline'],
@@ -66,7 +73,9 @@ export class CurrentTemplateComponent implements OnInit {
   }
 
   addJob(){
-    this.jobs.push({"jobsEditor":null})
+    this.jobs.push({
+      "jobsEditor": null
+    })
   }
 
   deleteJob(index){
@@ -86,4 +95,19 @@ export class CurrentTemplateComponent implements OnInit {
     ).subscribe()
   }
 
+  onExportPDF():void {
+    let DATA = this.selectedTemplate.selectedTemplate.nativeElement;
+
+    html2canvas(DATA).then(canvas => {
+        let fileWidth = 210;
+        let fileHeight = canvas.height * fileWidth / canvas.width;
+        
+        const FILEURI = canvas.toDataURL('image/png')
+        let PDF = new jsPDF('p', 'mm', 'a4');
+        let position = 0;
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+        
+        PDF.save('CV.pdf');
+    });   
+  }
 }
