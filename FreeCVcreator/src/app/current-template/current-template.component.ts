@@ -27,7 +27,7 @@ export class CurrentTemplateComponent implements OnInit {
   state:string
   zip_code:string
 
-  @ViewChild('selectedTemplate') selectedTemplate;
+  @ViewChild('temp1') temp1;
   profileEditor: string = ''
   jobs: Array<any> = []
 
@@ -96,7 +96,14 @@ export class CurrentTemplateComponent implements OnInit {
   }
 
   onExportPDF():void {
-    let DATA = this.selectedTemplate.selectedTemplate.nativeElement;
+    let DATA
+    console.log(this.selectedTemp)
+    if(this.selectedTemp == 'temp1'){
+      DATA = this.temp1.temp1.nativeElement;
+    } else if (this.selectedTemp == 'temp2'){
+      DATA = 'test';
+    }
+    
 
     html2canvas(DATA).then(canvas => {
         let fileWidth = 210;
@@ -104,6 +111,8 @@ export class CurrentTemplateComponent implements OnInit {
         
         const FILEURI = canvas.toDataURL('image/png')
         let PDF = new jsPDF('p', 'mm', 'a4');
+        const imageProps = PDF.getImageProperties(FILEURI)
+        console.log(imageProps)
         let position = 0;
         PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
         

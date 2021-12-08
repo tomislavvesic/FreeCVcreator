@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import { NgxPrintModule } from 'ngx-print';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CvCarouselComponent } from './cv-carousel/cv-carousel.component';
@@ -27,6 +28,7 @@ import { TemplateOneComponent } from './templates/template-one/template-one.comp
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgxPrintModule,
     HttpClientModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp({

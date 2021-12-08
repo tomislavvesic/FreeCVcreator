@@ -1,6 +1,5 @@
-<div class="currentTemp smallScale" #selectedTemplate>
-  <div class="row w-100">
-    <div class="col-lg-4 personalInfo">
+<div class="currentTemp" #temp1>
+    <div class="personalInfo">
       <img *ngIf="display_profile_picture" 
       class="rounded d-block img-thumbnail w-50 mt-4 rounded-circle"
       [src]="display_profile_picture"
@@ -18,7 +17,7 @@
       <h2>Postal Code</h2>
       <p>{{ zip_code }}</p>
     </div>
-    <div class="col-lg-8 profileInfo" #profileTemplate>
+    <div class="profileInfo" #profileTemplate>
       <div>
         <h1>PROFILE</h1>
         <hr>
@@ -38,5 +37,4 @@
         </div>
       </div>
     </div>
-  </div>
 </div>

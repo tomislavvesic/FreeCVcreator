@@ -8,7 +8,7 @@ import { TemplateRelatedService } from 'src/app/services/template-related.servic
   styleUrls: ['./template-one.component.scss']
 })
 export class TemplateOneComponent implements OnInit {
-  @ViewChild('selectedTemplate') selectedTemplate:ElementRef;
+  @ViewChild('temp1') temp1:ElementRef;
 
   @Input() form_profile_picture: any
   @Input() display_profile_picture: string

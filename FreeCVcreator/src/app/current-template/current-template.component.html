@@ -7,7 +7,10 @@
           <form class="row g-3 needs-validation" novalidate>
             <span>
               <h2>Personal Info</h2>
-              <button class="btn btn-outline-success w-50 mt-2 mb-2" (click)="onExportPDF()">
+              <button class="btn btn-outline-success w-50 mt-2 mb-2"
+              ngxPrint
+              printSectionId='print-me'
+              [useExistingCss]="true">
                 Export CV as PDF
               </button>
             </span>
@@ -53,8 +56,12 @@
           <form class="row g-3 needs-validation" novalidate>
             <span>
               <h2>Profile Info</h2>
-              <button class="btn btn-outline-success w-50 mt-2 mb-2" (click)="onExportPDF()">
-                Export CV as PDF</button>
+              <button class="btn btn-outline-success w-50 mt-2 mb-2"
+              ngxPrint
+              printSectionId='print-me'
+              [useExistingCss]="true">
+                Export CV as PDF
+              </button>
             </span>
             <div class="profile-container">
               <div class="col-md-12 quill-editor">
@@ -152,9 +159,9 @@
 </div>
 
 
-
-  <div class="col-xl-5 col-md-12">
-    <app-template-one #selectedTemplate
+  <div class="col-xl-5 col-md-12 smallScale">
+  <div id="print-me">
+    <app-template-one #temp1 
     *ngIf="selectedTemp == 'temp1'"
     [form_profile_picture]="form_profile_picture"
     [display_profile_picture]="display_profile_picture"
@@ -169,4 +176,5 @@
     [jobs]="jobs">
     </app-template-one>
   </div>
+
 </div>
