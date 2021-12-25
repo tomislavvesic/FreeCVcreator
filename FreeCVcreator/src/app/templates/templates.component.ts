@@ -15,7 +15,7 @@ export class TemplatesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  chooseTemp1(event){
-    this.templateService.chooseTemplate = 'temp1'
+  chooseTemp(event){
+    this.templateService.chooseTemplate = event
   }
 }

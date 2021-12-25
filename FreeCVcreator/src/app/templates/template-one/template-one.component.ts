@@ -10,8 +10,7 @@ import { TemplateRelatedService } from 'src/app/services/template-related.servic
 export class TemplateOneComponent implements OnInit {
   @ViewChild('selectedTemplate') selectedTemplate:ElementRef;
 
-  @Input() form_profile_picture: any
-  @Input() display_profile_picture: string
+  @Input() display_profile_picture: any
   @Input() first_name: string
   @Input() last_name: string
   @Input() email:string

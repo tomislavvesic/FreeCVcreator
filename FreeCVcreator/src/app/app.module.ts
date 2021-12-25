@@ -13,7 +13,8 @@ import { AppComponent } from './app.component';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage'
 import { AngularFireModule } from '@angular/fire/compat';
 import { TemplatesComponent } from './templates/templates.component';
-import { TemplateOneComponent } from './templates/template-one/template-one.component'
+import { TemplateOneComponent } from './templates/template-one/template-one.component';
+import { TemplateTwoComponent } from './templates/template-two/template-two.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TemplateOneComponent } from './templates/template-one/template-one.comp
     CvCarouselComponent,
     CurrentTemplateComponent,
     TemplatesComponent,
-    TemplateOneComponent
+    TemplateOneComponent,
+    TemplateTwoComponent
   ],
   imports: [
     BrowserModule,

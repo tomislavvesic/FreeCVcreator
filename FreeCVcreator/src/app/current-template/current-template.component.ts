@@ -7,6 +7,9 @@ import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators'
 import { TemplateRelatedService } from '../services/template-related.service';
+import { map } from 'rxjs/operators';
+import { Observable, Observer } from 'rxjs';
+
 
 
 @Component({
@@ -16,9 +19,10 @@ import { TemplateRelatedService } from '../services/template-related.service';
 })
 export class CurrentTemplateComponent implements OnInit {
   selectedTemp = this.templateService.chooseTemplate
+  id: number
   
   form_profile_picture: any
-  display_profile_picture: string
+  display_profile_picture: any
   first_name: string
   last_name: string
   email:string
@@ -82,32 +86,54 @@ export class CurrentTemplateComponent implements OnInit {
     this.jobs.splice(index,1)
   }
 
+  toDataURL(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      var reader = new FileReader();
+      reader.onloadend = function() {
+        callback(reader.result);
+      }
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+  }
+
   onProfilePicture(event){
     this.form_profile_picture = event.target.files[0]
     let filePath = "/images/" + Math.random() + this.form_profile_picture.name
     const fileRef = this.fireStorage.ref(filePath)
     this.fireStorage.upload(filePath, this.form_profile_picture).snapshotChanges().pipe(
       finalize(() => {
-        fileRef.getDownloadURL().subscribe((url)=>{
-          this.display_profile_picture = url
+        fileRef.getDownloadURL()
+        .subscribe((url)=>{
+          let base64img
+          this.toDataURL(url, function(dataUrl) {
+            base64img = dataUrl
+          })
+          this.display_profile_picture = new Observable<string>((observer: Observer<string>) => {
+            setInterval(() => observer.next(base64img), 2000);
+          });
         })
       })
     ).subscribe()
   }
 
   onExportPDF():void {
+    this.id = 1
     let DATA = this.selectedTemplate.selectedTemplate.nativeElement;
 
-    html2canvas(DATA).then(canvas => {
+    html2canvas(DATA,{scale:5}).then(canvas => {
         let fileWidth = 210;
         let fileHeight = canvas.height * fileWidth / canvas.width;
-        
-        const FILEURI = canvas.toDataURL('image/png')
+
+        const FILEURI = canvas.toDataURL('pdf')
         let PDF = new jsPDF('p', 'mm', 'a4');
         let position = 0;
-        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight, null, 'FAST')
         
         PDF.save('CV.pdf');
-    });   
+    }); 
   }
 }

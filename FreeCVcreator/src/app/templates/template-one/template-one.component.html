@@ -2,11 +2,11 @@
   <div class="row w-100">
     <div class="col-lg-4 personalInfo">
       <img *ngIf="display_profile_picture" 
-      class="rounded d-block img-thumbnail w-50 mt-4 rounded-circle"
-      [src]="display_profile_picture"
+      class="d-block img-thumbnail w-50 mt-4 p-0 profile-picture"
+      [src]="display_profile_picture | async"
       alt="Profile Picture"
       >
-      <hr>
+      <hr *ngIf="display_profile_picture">
       <h2>Full Name</h2>
       <p>{{ first_name }} {{ last_name }}</p>
       <h2>Email Adress</h2>
