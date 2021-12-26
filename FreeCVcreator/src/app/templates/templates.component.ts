@@ -6,14 +6,11 @@ import { TemplateRelatedService } from '../services/template-related.service';
   templateUrl: './templates.component.html',
   styleUrls: ['./templates.component.scss']
 })
-export class TemplatesComponent implements OnInit {
+export class TemplatesComponent {
 
   constructor(
     private templateService: TemplateRelatedService
   ) { }
-
-  ngOnInit(): void {
-  }
 
   chooseTemp(event){
     this.templateService.chooseTemplate = event

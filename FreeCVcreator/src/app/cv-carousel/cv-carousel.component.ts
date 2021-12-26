@@ -5,11 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './cv-carousel.component.html',
   styleUrls: ['./cv-carousel.component.scss']
 })
-export class CvCarouselComponent implements OnInit {
+export class CvCarouselComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -7,7 +6,6 @@ import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators'
 import { TemplateRelatedService } from '../services/template-related.service';
-import { map } from 'rxjs/operators';
 import { Observable, Observer } from 'rxjs';
 
 
@@ -17,11 +15,10 @@ import { Observable, Observer } from 'rxjs';
   templateUrl: './current-template.component.html',
   styleUrls: ['./current-template.component.scss']
 })
-export class CurrentTemplateComponent implements OnInit {
+export class CurrentTemplateComponent {
   selectedTemp = this.templateService.chooseTemplate
-  id: number
   
-  form_profile_picture: any
+  form_profile_picture: HTMLImageElement
   display_profile_picture: any
   first_name: string
   last_name: string
@@ -62,9 +59,6 @@ export class CurrentTemplateComponent implements OnInit {
       "color":"rgb(220, 220, 220)",
       "quill-editor":"20px"
     }
-  }
-
-  ngOnInit(): void {
   }
 
   changedProfile(event: EditorChangeContent | EditorChangeSelection){
@@ -121,7 +115,6 @@ export class CurrentTemplateComponent implements OnInit {
   }
 
   onExportPDF():void {
-    this.id = 1
     let DATA = this.selectedTemplate.selectedTemplate.nativeElement;
 
     html2canvas(DATA,{scale:5}).then(canvas => {

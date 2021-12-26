@@ -7,7 +7,7 @@ import { TemplateRelatedService } from 'src/app/services/template-related.servic
   templateUrl: './template-one.component.html',
   styleUrls: ['./template-one.component.scss']
 })
-export class TemplateOneComponent implements OnInit {
+export class TemplateOneComponent {
   @ViewChild('selectedTemplate') selectedTemplate:ElementRef;
 
   @Input() display_profile_picture: any
@@ -24,7 +24,4 @@ export class TemplateOneComponent implements OnInit {
   constructor(
     public templateService: TemplateRelatedService
   ) { }
-
-  ngOnInit(): void {
-  }
 }

@@ -24,7 +24,7 @@
         <hr>
         <p class="ql-editor" [innerHTML]="profileEditor"></p>
       </div>
-      <div *ngIf="jobs.length != 0">
+      <div *ngIf="jobs.length !== 0">
         <b><h1>JOBS</h1></b>
         <hr style="margin-bottom: 30px;">
         <div *ngFor="let job of jobs">
