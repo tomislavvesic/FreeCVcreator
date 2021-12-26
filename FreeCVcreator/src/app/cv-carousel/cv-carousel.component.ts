@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
+import { TemplateRelatedService } from '../services/template-related.service';
 @Component({
   selector: 'app-cv-carousel',
   templateUrl: './cv-carousel.component.html',
@@ -7,5 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CvCarouselComponent {
 
-  constructor() { }
+  constructor(
+    private templateService: TemplateRelatedService,
+    public router: Router
+  ) { }
+
+  chooseTemp(event){
+    this.templateService.chooseTemplate = event
+    this.router.navigate(['template']);
+  }
 }

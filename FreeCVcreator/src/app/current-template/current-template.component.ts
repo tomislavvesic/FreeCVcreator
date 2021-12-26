@@ -7,6 +7,8 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators'
 import { TemplateRelatedService } from '../services/template-related.service';
 import { Observable, Observer } from 'rxjs';
+import { HexBase64BinaryEncoding } from 'crypto';
+import { Url } from 'url';
 
 
 
@@ -19,7 +21,7 @@ export class CurrentTemplateComponent {
   selectedTemp = this.templateService.chooseTemplate
   
   form_profile_picture: HTMLImageElement
-  display_profile_picture: any
+  display_profile_picture: Observable<HexBase64BinaryEncoding>
   first_name: string
   last_name: string
   email:string
@@ -96,17 +98,23 @@ export class CurrentTemplateComponent {
 
   onProfilePicture(event){
     this.form_profile_picture = event.target.files[0]
-    let filePath = "/images/" + Math.random() + this.form_profile_picture.name
+    let filePath = "/images/" + Math.random() + this.form_profile_picture.id
     const fileRef = this.fireStorage.ref(filePath)
+    
+    // We need to upload image to firebase because we can't select it locally
     this.fireStorage.upload(filePath, this.form_profile_picture).snapshotChanges().pipe(
       finalize(() => {
+        // Download image from firebase
         fileRef.getDownloadURL()
-        .subscribe((url)=>{
+        .subscribe((url: Url)=>{
           let base64img
+          // Turn Firebase URL to base64. PDF download only uses base64 and cannot download URL
           this.toDataURL(url, function(dataUrl) {
             base64img = dataUrl
           })
-          this.display_profile_picture = new Observable<string>((observer: Observer<string>) => {
+
+          // set observer to base64 image
+          this.display_profile_picture = new Observable<HexBase64BinaryEncoding>((observer: Observer<HexBase64BinaryEncoding>) => {
             setInterval(() => observer.next(base64img), 2000);
           });
         })

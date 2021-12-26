@@ -75,17 +75,6 @@
     }
 }
 
-.smallScale {
-    transform: scale(0.515);
-    -ms-transform: scale(0.515); /* IE 9 */
-    -webkit-transform: scale(0.515); /* Safari and Chrome */
-    -o-transform: scale(0.515); /* Opera */
-    -moz-transform: scale(0.515); /* Firefox */
-    transform-origin: top left;
-}
-
-
-
 @media only screen and (min-width: 1200px) {
     .currentTemp {
       position: fixed;

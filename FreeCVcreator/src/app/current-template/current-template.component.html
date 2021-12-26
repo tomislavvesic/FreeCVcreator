@@ -1,6 +1,5 @@
 <div class="row ms-5 me-5 pt-3 pb-1 mt-3 mb-3 currentCVcontainer">
-  <div class="col-xl-7 col-lg-12 col-md-12">
-    <div class="tempForm">
+  <div class="col-xl-7 col-lg-12 col-md-12 tempForm">
       <div id="carouselForm" class="text-center imageslider carousel carousel-dark">
         
         <div class="carousel-item active" data-bs-interval="99999999">
@@ -149,7 +148,6 @@
 </div>
 </div>
 </div>
-</div>
 
 
 
@@ -167,5 +165,18 @@
     [profileEditor]="profileEditor"
     [jobs]="jobs">
     </app-template-one>
+    <app-template-two #selectedTemplate
+    *ngIf="selectedTemp === 'temp2'"
+    [display_profile_picture]="display_profile_picture"
+    [first_name]="first_name"
+    [last_name]="last_name"
+    [email]="email"
+    [phone_number]="phone_number"
+    [city]="city"
+    [state]="state"
+    [zip_code]="zip_code"
+    [profileEditor]="profileEditor"
+    [jobs]="jobs">
+    </app-template-two>
   </div>
 </div>
