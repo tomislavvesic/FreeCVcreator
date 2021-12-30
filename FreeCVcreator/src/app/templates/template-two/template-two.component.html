@@ -1,1 +1,43 @@
-<p #selectedTemplate>template-two works!</p>
+<div class="temp1 currentTemp smallScale" #selectedTemplate>
+    <div class="row w-100">
+      <div class="col-lg-4 personalInfo">
+        <img *ngIf="display_profile_picture" 
+        class="d-block img-thumbnail mt-2 p-0 profile-picture"
+        [src]="display_profile_picture | async"
+        alt="Profile Picture"
+        >
+        <hr *ngIf="display_profile_picture">
+        <h2>Full Name</h2>
+        <p>{{ first_name }} {{ last_name }}</p>
+        <h2>Email Adress</h2>
+        <p>{{ email }}</p>
+        <h2>Telephone Number</h2>
+        <p>{{ phone_number }}</p>
+        <h2>Town & City/State</h2>
+        <p>{{ city }}/{{ state }}</p>
+        <h2>Postal Code</h2>
+        <p>{{ zip_code }}</p>
+      </div>
+      <div class="col-lg-8 profileInfo" #profileTemplate>
+        <div>
+          <h1>PROFILE</h1>
+          <hr>
+          <p class="ql-editor" [innerHTML]="profileEditor"></p>
+        </div>
+        <div *ngIf="jobs.length !== 0">
+          <b><h1>JOBS</h1></b>
+          <hr style="margin-bottom: 30px;">
+          <div *ngFor="let job of jobs">
+            <b><h5 [innerHTML]="job.jobTitle"></h5></b>
+            <hr style="margin-bottom: 10px; width: 50%;">
+            <span>
+              <b><h6 [innerHTML]="job.companyName" style="display: inline;"></h6>
+              / </b> <i>{{job.fromDate | date:'M/d/y'}}-{{ job.toDate | date:'M/d/y'}}</i>
+            </span>
+            <p class="ql-editor" [innerHTML]="job.jobsEditor"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

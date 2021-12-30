@@ -152,31 +152,51 @@
 
 
   <div class="col-xl-5 col-md-12">
+    <!-- <ng-template *ngIf="selectedTemp; else noSelectedTemp"> -->
+
+    <!-- Investigate why ifElse is not working with ng-template  -->
+    <div *ngIf="!selectedTemp"
+          class="h-100 d-flex justify-content-center">
+      <p class="" style="color: white; margin-top: 50%;">
+        Please select the template
+      </p>
+    </div>
+
     <app-template-one #selectedTemplate
-    *ngIf="selectedTemp === 'temp1'"
-    [display_profile_picture]="display_profile_picture"
-    [first_name]="first_name"
-    [last_name]="last_name"
-    [email]="email"
-    [phone_number]="phone_number"
-    [city]="city"
-    [state]="state"
-    [zip_code]="zip_code"
-    [profileEditor]="profileEditor"
-    [jobs]="jobs">
+      *ngIf="selectedTemp === 'temp1'"
+      [display_profile_picture]="display_profile_picture"
+      [first_name]="first_name"
+      [last_name]="last_name"
+      [email]="email"
+      [phone_number]="phone_number"
+      [city]="city"
+      [state]="state"
+      [zip_code]="zip_code"
+      [profileEditor]="profileEditor"
+      [jobs]="jobs">
     </app-template-one>
     <app-template-two #selectedTemplate
-    *ngIf="selectedTemp === 'temp2'"
-    [display_profile_picture]="display_profile_picture"
-    [first_name]="first_name"
-    [last_name]="last_name"
-    [email]="email"
-    [phone_number]="phone_number"
-    [city]="city"
-    [state]="state"
-    [zip_code]="zip_code"
-    [profileEditor]="profileEditor"
-    [jobs]="jobs">
+      *ngIf="selectedTemp === 'temp2'"
+      [display_profile_picture]="display_profile_picture"
+      [first_name]="first_name"
+      [last_name]="last_name"
+      [email]="email"
+      [phone_number]="phone_number"
+      [city]="city"
+      [state]="state"
+      [zip_code]="zip_code"
+      [profileEditor]="profileEditor"
+      [jobs]="jobs">
     </app-template-two>
+
+
+    <!-- </ng-template> -->
+    <!-- <ng-template #noSelectedTemp>
+      <div class="h-100 d-flex justify-content-center">
+        <p class="" style="color: white; margin-top: 50%;">
+          Please select the template
+        </p>
+      </div>
+    </ng-template> -->
   </div>
 </div>
