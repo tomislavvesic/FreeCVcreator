@@ -8,15 +8,15 @@
       >
       <hr *ngIf="display_profile_picture">
       <h2>Full Name</h2>
-      <p>{{ first_name }} {{ last_name }}</p>
+      <p> {{ formData.first_name }} {{ formData.last_name }}</p>
       <h2>Email Adress</h2>
-      <p>{{ email }}</p>
+      <p>{{ formData.email }}</p>
       <h2>Telephone Number</h2>
-      <p>{{ phone_number }}</p>
+      <p>{{ formData.phone_number }}</p>
       <h2>Town & City/State</h2>
-      <p>{{ city }}/{{ state }}</p>
+      <p>{{ formData.city }}/{{ formData.state }}</p>
       <h2>Postal Code</h2>
-      <p>{{ zip_code }}</p>
+      <p>{{ formData.zip_code }}</p>
     </div>
     <div class="col-lg-8 profileInfo" #profileTemplate>
       <div>
