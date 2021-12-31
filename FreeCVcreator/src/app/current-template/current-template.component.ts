@@ -18,9 +18,12 @@ import { Url } from 'url';
   styleUrls: ['./current-template.component.scss']
 })
 export class CurrentTemplateComponent {
+  // var below decides which template is selected
   selectedTemp = this.templateService.chooseTemplate
-  
+  // var below is used to create PDF from selected template body
+  @ViewChild('selectedTemplateBody') selectedTemplateBody;
   form_profile_picture: HTMLImageElement
+
   display_profile_picture: Observable<HexBase64BinaryEncoding>
   first_name: string
   last_name: string
@@ -29,14 +32,12 @@ export class CurrentTemplateComponent {
   city:string
   state:string
   zip_code:string
-
-  @ViewChild('selectedTemplate') selectedTemplate;
   profileEditor: string = ''
   jobs: Array<any> = []
 
+  // Quill editor options
   modules:Object = {}
   quillStyles:Object={}
-
   constructor(
     private fireStorage: AngularFireStorage,
     public templateService: TemplateRelatedService
@@ -123,7 +124,7 @@ export class CurrentTemplateComponent {
   }
 
   onExportPDF():void {
-    let DATA = this.selectedTemplate.selectedTemplate.nativeElement;
+    let DATA = this.selectedTemplateBody.selectedTemplate.nativeElement;
 
     html2canvas(DATA,{scale:5}).then(canvas => {
         let fileWidth = 210;

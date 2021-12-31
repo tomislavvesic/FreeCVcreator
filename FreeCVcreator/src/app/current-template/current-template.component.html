@@ -164,7 +164,7 @@
       </p>
     </div>
 
-    <app-template-one #selectedTemplate
+    <app-template-one #selectedTemplateBody
       *ngIf="selectedTemp === 'temp1'"
       [display_profile_picture]="display_profile_picture"
       [first_name]="first_name"
@@ -177,7 +177,7 @@
       [profileEditor]="profileEditor"
       [jobs]="jobs">
     </app-template-one>
-    <app-template-two #selectedTemplate
+    <app-template-two #selectedTemplateBody
       *ngIf="selectedTemp === 'temp2'"
       [display_profile_picture]="display_profile_picture"
       [first_name]="first_name"
