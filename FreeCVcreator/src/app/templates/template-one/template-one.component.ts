@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { TemplateRelatedService } from 'src/app/services/template-related.service';
 
 @Component({
