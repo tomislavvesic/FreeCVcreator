@@ -68,15 +68,23 @@ export class CurrentTemplateComponent {
     this.profileEditor = event['editor']['root']['innerHTML']
   }
 
+  addJob(){
+    console.log(this.jobs)
+    this.jobs.push({
+      "jobsEditor": null,
+      "expanded": true
+    })
+  }
+
+  jobToggle(index){
+    console.log(this.jobs)
+    let job = this.jobs[index]
+    job.expanded = !job.expanded
+  }
+
   changedJobs(event: EditorChangeContent | EditorChangeSelection, index){
     let job = this.jobs[index]
     job.jobsEditor = event['editor']['root']['innerHTML']
-  }
-
-  addJob(){
-    this.jobs.push({
-      "jobsEditor": null
-    })
   }
 
   deleteJob(index){

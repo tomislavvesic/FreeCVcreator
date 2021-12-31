@@ -78,12 +78,24 @@
     
         .jobs-container{
             position: relative;
-    
+            padding-bottom: 10px;
+            
+            .btn-dark{
+                position: absolute;
+                top: 0;
+                right: 0;
+                border-radius: 15px;
+            }
+
             .btn-danger{
                 position: absolute;
                 top: 0;
                 right: 0;
                 border-top-right-radius: 15px;
+            }
+
+            .round-corners{
+                border-bottom-right-radius: 15px;
             }
         }
     }
