@@ -1,6 +1,7 @@
 <div class="temp1 currentTemp smallScale" #selectedTemplate>
   <div class="row w-100">
     <div class="col-lg-4 personalInfo">
+      <!-- TODO implement loading spinner in all templates -->
       <img *ngIf="display_profile_picture" 
       class="d-block w-50 img-thumbnail mt-4 p-0 profile-picture"
       [src]="display_profile_picture | async"
