@@ -164,14 +164,20 @@
       </p>
     </div>
 
-    <app-template-one #selectedTemplateBody
+    <app-template-one #selectedTemplate
       *ngIf="selectedTemp === 'temp1'"
       [display_profile_picture]="display_profile_picture"
-      [formData]="formData"
+      [first_name]="first_name"
+      [last_name]="last_name"
+      [email]="email"
+      [phone_number]="phone_number"
+      [city]="city"
+      [state]="state"
+      [zip_code]="zip_code"
       [profileEditor]="profileEditor"
       [jobs]="jobs">
     </app-template-one>
-    <app-template-two #selectedTemplateBody
+    <app-template-two #selectedTemplate
       *ngIf="selectedTemp === 'temp2'"
       [display_profile_picture]="display_profile_picture"
       [first_name]="first_name"

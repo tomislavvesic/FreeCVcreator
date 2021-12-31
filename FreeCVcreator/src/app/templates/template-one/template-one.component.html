@@ -2,21 +2,21 @@
   <div class="row w-100">
     <div class="col-lg-4 personalInfo">
       <img *ngIf="display_profile_picture" 
-      class="d-block img-thumbnail mt-4 p-0 profile-picture justify-content-center"
+      class="d-block w-50 img-thumbnail mt-4 p-0 profile-picture"
       [src]="display_profile_picture | async"
       alt="Profile Picture"
       >
       <hr *ngIf="display_profile_picture">
       <h2>Full Name</h2>
-      <p> {{ formData.first_name }} {{ formData.last_name }}</p>
+      <p>{{ first_name }} {{ last_name }}</p>
       <h2>Email Adress</h2>
-      <p>{{ formData.email }}</p>
+      <p>{{ email }}</p>
       <h2>Telephone Number</h2>
-      <p>{{ formData.phone_number }}</p>
+      <p>{{ phone_number }}</p>
       <h2>Town & City/State</h2>
-      <p>{{ formData.city }}/{{ formData.state }}</p>
+      <p>{{ city }}/{{ state }}</p>
       <h2>Postal Code</h2>
-      <p>{{ formData.zip_code }}</p>
+      <p>{{ zip_code }}</p>
     </div>
     <div class="col-lg-8 profileInfo" #profileTemplate>
       <div>

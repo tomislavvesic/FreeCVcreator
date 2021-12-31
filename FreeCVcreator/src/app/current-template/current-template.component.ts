@@ -24,26 +24,16 @@ export class CurrentTemplateComponent {
   @ViewChild('selectedTemplateBody') selectedTemplateBody;
   form_profile_picture: HTMLImageElement
 
-  first_name: string = 'test'
-  last_name: string = ''
-  email:string = ''
-  phone_number:string = ''
-  city:string = ''
-  state:string = ''
-  zip_code:string = ''
   display_profile_picture: Observable<HexBase64BinaryEncoding>
+  first_name: string
+  last_name: string
+  email:string
+  phone_number:string
+  city:string
+  state:string
+  zip_code:string
   profileEditor: string = ''
   jobs: Array<any> = []
-
-  formData = {
-    "first_name": this.first_name,
-    "last_name": this.last_name,
-    "email": this.email,
-    "phone_number": this.phone_number,
-    "city": this.city,
-    "state": this.state,
-    "zip_code": this.zip_code,
-  }
 
   // Quill editor options
   modules:Object = {}
