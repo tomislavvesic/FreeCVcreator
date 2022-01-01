@@ -199,7 +199,13 @@
     <ng-template #noSelectedTemp>
       <div class="h-100 d-flex justify-content-center">
         <p class="" style="color: white; margin-top: 50%;">
-          Please select the template
+          Please select the
+          <a style="text-decoration: none;
+                    display: block;
+                    text-align:center;"
+          [routerLink]="['/templates']">
+            template
+          </a>
         </p>
       </div>
     </ng-template>
