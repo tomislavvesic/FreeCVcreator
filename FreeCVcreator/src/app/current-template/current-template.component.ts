@@ -69,7 +69,6 @@ export class CurrentTemplateComponent {
   }
 
   addJob(){
-    console.log(this.jobs)
     this.jobs.push({
       "jobsEditor": null,
       "expanded": true
@@ -77,7 +76,6 @@ export class CurrentTemplateComponent {
   }
 
   jobToggle(index){
-    console.log(this.jobs)
     let job = this.jobs[index]
     job.expanded = !job.expanded
   }
