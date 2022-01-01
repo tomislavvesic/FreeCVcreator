@@ -9,6 +9,7 @@
         padding:15px 20px;
         margin:auto;
         min-height: 600px;
+        border-right: 1px solid gray;
     
         input{
             color: rgb(220, 220, 220);
@@ -97,6 +98,19 @@
             .round-corners{
                 border-bottom-right-radius: 15px;
             }
+        }
+    }
+
+    .no-temp{
+        p{
+            color: white;
+            margin-top: 50%;
+        }
+
+        a{
+            text-decoration: none;
+            display: block;
+            text-align:center; 
         }
     }
 }

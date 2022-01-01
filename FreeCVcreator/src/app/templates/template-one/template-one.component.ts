@@ -20,6 +20,11 @@ export class TemplateOneComponent {
   @Input() profileEditor: string = ''
   @Input() jobs: Array<any> = []
 
+  @Input() tempColor: string = 'black'
+  @Input() tempBackground: string = 'white'
+  @Input() personalColor: string = 'white'
+  @Input() personalBackground: string = '#000044'
+
   constructor(
     public templateService: TemplateRelatedService
   ) { }

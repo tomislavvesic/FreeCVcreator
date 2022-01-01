@@ -6,6 +6,37 @@
         <div class="carousel-item active" data-bs-interval="99999999">
           <form class="row g-3 needs-validation" novalidate>
             <span>
+              <h2>Template Decorator</h2>
+              <button class="btn btn-outline-success w-50 mt-2 mb-2" (click)="onExportPDF()">
+                Export CV as PDF
+              </button>
+            </span>
+            <br>
+            <table>
+              <tr>
+                <td><label class="form-label">Template Text Color</label></td>
+                <td><input type="color" class="form-control form-control-color"
+                name="tempColor" [(ngModel)]="tempColor"></td>
+                <td><label class="form-label">Template Background Color</label></td>
+                <td><input type="color" class="form-control form-control-color"
+                name="tempBackground" value="#ff0000" [(ngModel)]="tempBackground"></td>
+              </tr>
+              <br>
+              <tr><td><label class="form-label">Personal Text Color</label></td>
+                <td><input type="color" class="form-control form-control-color"
+                name="personalColor" [(ngModel)]="personalColor"></td>
+                <td><label class="form-label">Personal Background Color</label></td>
+                <td><input type="color" class="form-control form-control-color"
+                name="personalBackground" [(ngModel)]="personalBackground"></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+
+        <!-- Display second form page -->
+        <div class="carousel-item" data-bs-interval="99999999">
+          <form class="row g-3 needs-validation" novalidate>
+            <span>
               <h2>Personal Info</h2>
               <button class="btn btn-outline-success w-50 mt-2 mb-2" (click)="onExportPDF()">
                 Export CV as PDF
@@ -95,7 +126,7 @@
                     [(ngModel)]="job.companyName"
                     required>
                   </div>
-                  <div style="text-align: center;">
+                  <div>
                     <div class="row g-3">
                       <div class="col-auto">
                         <label class="col-form-label">Started: </label>
@@ -171,41 +202,27 @@
       <app-template-one #selectedTemplateBody
         *ngIf="selectedTemp === 'temp1'"
         [display_profile_picture]="display_profile_picture"
-        [first_name]="first_name"
-        [last_name]="last_name"
-        [email]="email"
-        [phone_number]="phone_number"
-        [city]="city"
-        [state]="state"
-        [zip_code]="zip_code"
-        [profileEditor]="profileEditor"
-        [jobs]="jobs">
+        [first_name]="first_name" [last_name]="last_name" [email]="email"
+        [phone_number]="phone_number" [city]="city"
+        [state]="state" [zip_code]="zip_code"
+        [profileEditor]="profileEditor" [jobs]="jobs"
+        [tempColor]="tempColor" [tempBackground]="tempBackground"
+        [personalColor]="personalColor" [personalBackground]="personalBackground">
       </app-template-one>
       <app-template-two #selectedTemplateBody
         *ngIf="selectedTemp === 'temp2'"
         [display_profile_picture]="display_profile_picture"
-        [first_name]="first_name"
-        [last_name]="last_name"
-        [email]="email"
-        [phone_number]="phone_number"
-        [city]="city"
-        [state]="state"
-        [zip_code]="zip_code"
-        [profileEditor]="profileEditor"
-        [jobs]="jobs">
+        [first_name]="first_name" [last_name]="last_name" [email]="email"
+        [phone_number]="phone_number" [city]="city"
+        [state]="state" [zip_code]="zip_code"
+        [profileEditor]="profileEditor" [jobs]="jobs">
       </app-template-two>
     </div>
     
     <ng-template #noSelectedTemp>
-      <div class="h-100 d-flex justify-content-center">
-        <p style="color: white; margin-top: 50%;">
-          Please select the
-          <a style="text-decoration: none;
-                    display: block;
-                    text-align:center;"
-          [routerLink]="['/templates']">
-            template
-          </a>
+      <div class="h-100 d-flex justify-content-center no-temp">
+        <p>Please select the
+          <a [routerLink]="['/templates']">template</a>
         </p>
       </div>
     </ng-template>

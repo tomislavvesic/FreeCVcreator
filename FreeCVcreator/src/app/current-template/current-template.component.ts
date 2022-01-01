@@ -35,6 +35,12 @@ export class CurrentTemplateComponent {
   profileEditor: string = ''
   jobs: Array<any> = []
 
+  // Variables used for chaning color of templates
+  tempColor: string = '#000000'
+  tempBackground: string = '#FFFFFF'
+  personalColor: string = '#FFFFFF'
+  personalBackground: string = '#000044'
+
   // Quill editor options
   modules:Object = {}
   quillStyles:Object={}
@@ -62,6 +68,10 @@ export class CurrentTemplateComponent {
       "color":"rgb(220, 220, 220)",
       "quill-editor":"20px"
     }
+  }
+
+  updateTemplateColor(event){
+    console.log(event)
   }
 
   changedProfile(event: EditorChangeContent | EditorChangeSelection){

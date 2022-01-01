@@ -1,6 +1,11 @@
-<div class="temp1 currentTemp smallScale" #selectedTemplate>
+<div class="temp1 currentTemp smallScale"
+  [style.color]="tempColor"
+  [style.background]="tempBackground"
+  #selectedTemplate>
   <div class="row w-100">
-    <div class="col-lg-4 personalInfo">
+    <div class="col-lg-4 personalInfo"
+    [style.color]="personalColor"
+    [style.background]="personalBackground">
       <!-- TODO implement loading spinner in all templates -->
       <img *ngIf="display_profile_picture" 
       class="d-block w-50 img-thumbnail mt-4 p-0 profile-picture"
