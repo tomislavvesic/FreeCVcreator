@@ -3,33 +3,54 @@
       <div id="carouselForm" class="text-center imageslider carousel carousel-dark">
 
         <!-- Display first form page -->
-        <div class="carousel-item active" data-bs-interval="99999999">
+        <div class="carousel-item active color-picker" data-bs-interval="99999999">
           <form class="row g-3 needs-validation" novalidate>
             <span>
               <h2>Template Decorator</h2>
-              <button class="btn btn-outline-success w-50 mt-2 mb-2" (click)="onExportPDF()">
-                Export CV as PDF
-              </button>
             </span>
             <br>
+            <h5>Choose your own template colors</h5>
             <table>
               <tr>
                 <td><label class="form-label">Template Text Color</label></td>
                 <td><input type="color" class="form-control form-control-color"
                 name="tempColor" [(ngModel)]="tempColor"></td>
+                <td><label class="form-label">Personal Text Color</label></td>
+                <td><input type="color" class="form-control form-control-color"
+                name="personalColor" [(ngModel)]="personalColor"></td>
+              </tr>
+              <br>
+              <tr>
                 <td><label class="form-label">Template Background Color</label></td>
                 <td><input type="color" class="form-control form-control-color"
                 name="tempBackground" [(ngModel)]="tempBackground"></td>
-              </tr>
-              <br>
-              <tr><td><label class="form-label">Personal Text Color</label></td>
-                <td><input type="color" class="form-control form-control-color"
-                name="personalColor" [(ngModel)]="personalColor"></td>
                 <td><label class="form-label">Personal Background Color</label></td>
                 <td><input type="color" class="form-control form-control-color"
                 name="personalBackground" [(ngModel)]="personalBackground"></td>
               </tr>
             </table>
+            <hr class="mt-5">
+            <h5>Below are proposed colorings for templates</h5>
+            <div class="row mt-4">
+              <div class="col"><button class="btn btn-sm btn-light temp-color-button1"
+                (click)="changeTempColor('#000000', '#E6E6FA', '#ffffff', '#000044')"> Test </button></div>
+              <div class="col"><button class="btn btn-sm btn-light temp-color-button2"
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')"> Test </button></div>
+              <div class="col"><button class="btn btn-sm btn-light temp-color-button3"
+                (click)="changeTempColor('#be1919', '#fff0f0', '#be1919', '#e59999')" > Test </button></div>
+              <div class="col"><button class="btn btn-sm btn-light temp-color-button4"
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" > Test </button></div>
+            </div>
+            <div class="row mt-4">
+              <div class="col"><button class="btn btn-sm btn-light temp-color-button5"
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" > Test </button></div>
+              <div class="col"><button class="btn btn-sm btn-light temp-color-button6"
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" > Test </button></div>
+              <div class="col"><button class="btn btn-sm btn-light temp-color-button7"
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" > Test </button></div>
+              <div class="col"><button class="btn btn-sm btn-light temp-color-button8"
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" > Test </button></div>
+            </div>
           </form>
         </div>
 

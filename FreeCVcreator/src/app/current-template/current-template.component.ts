@@ -70,8 +70,11 @@ export class CurrentTemplateComponent {
     }
   }
 
-  updateTemplateColor(event){
-    console.log(event)
+  changeTempColor(tempColor ,tempBackground ,personalColor ,personalBackground){
+    this.tempColor = tempColor
+    this.tempBackground = tempBackground
+    this.personalColor = personalColor
+    this.personalBackground = personalBackground
   }
 
   changedProfile(event: EditorChangeContent | EditorChangeSelection){

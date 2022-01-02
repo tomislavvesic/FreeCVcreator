@@ -37,31 +37,26 @@
                 margin-bottom: 5px;
             }
         }
+
+        .color-picker{
+            button{
+                width: 80%;
+            }
+
+            .temp-color-button1{background: linear-gradient(-90deg, #E6E6FA 50%, #000044 50%);}
+            .temp-color-button2{background: linear-gradient(-90deg, #ffffff 50%, #dbd7d7 50%);}
+            .temp-color-button3{background: linear-gradient(-90deg, #fff0f0 50%, #e59999 50%);}
+            .temp-color-button4{background: linear-gradient(-90deg, red 50%, yellow 50%);}
+            .temp-color-button5{background: linear-gradient(-90deg, red 50%, yellow 50%);}
+            .temp-color-button6{background: linear-gradient(-90deg, red 50%, yellow 50%);}
+            .temp-color-button7{background: linear-gradient(-90deg, red 50%, yellow 50%);}
+            .temp-color-button8{background: linear-gradient(-90deg, red 50%, yellow 50%);}
+        }
     
         .jobBtn{
             width: 100%;
             height: 35px;
             border-radius: 20px;
-        }
-        
-        .btn-pos button{
-            margin:auto;
-            display: inline;
-            width: 3.6rem;
-            height: 2.2rem;
-            background-color: rgba(255,255,255,0.4);
-            border:1px inset black;
-            
-        }
-    
-        .btn-pos .btn-prev{
-            border-top-left-radius: 100px;
-            border-bottom-left-radius: 100px;
-        }
-    
-        .btn-pos .btn-next{
-            border-top-right-radius: 100px;
-            border-bottom-right-radius: 100px;
         }
     
         .quill-editor{
@@ -98,6 +93,26 @@
             .round-corners{
                 border-bottom-right-radius: 15px;
             }
+        }
+
+        .btn-pos button{
+            margin:auto;
+            display: inline;
+            width: 3.6rem;
+            height: 2.2rem;
+            background-color: rgba(255,255,255,0.4);
+            border:1px inset black;
+            
+        }
+    
+        .btn-pos .btn-prev{
+            border-top-left-radius: 100px;
+            border-bottom-left-radius: 100px;
+        }
+    
+        .btn-pos .btn-next{
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
         }
     }
 
