@@ -13,16 +13,23 @@
       alt="Profile Picture"
       >
       <hr *ngIf="display_profile_picture">
-      <h2>Full Name</h2>
+      <h5>Full Name</h5>
       <p>{{ first_name }} {{ last_name }}</p>
-      <h2>Email Adress</h2>
+      <h5>Email Adress</h5>
       <p>{{ email }}</p>
-      <h2>Telephone Number</h2>
+      <h5>Telephone Number</h5>
       <p>{{ phone_number }}</p>
-      <h2>Town & City/State</h2>
+      <h5>Town & City/State</h5>
       <p>{{ city }}/{{ state }}</p>
-      <h2>Postal Code</h2>
+      <h5>Postal Code</h5>
       <p>{{ zip_code }}</p>
+      <hr>
+      <div *ngIf="skills">
+        <div *ngFor="let skill of skills">
+          <h6> {{skill.skillset}} </h6>
+          <p class="progress-bar bg-success" [style.width]="skill.skill_range | skillDisplay">{{ skill.skill_range | skillDisplay}}</p>
+        </div>
+      </div>
     </div>
     <div class="col-lg-8 profileInfo" #profileTemplate>
       <div>

@@ -14,7 +14,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage'
 import { AngularFireModule } from '@angular/fire/compat';
 import { TemplatesComponent } from './templates/templates.component';
 import { TemplateOneComponent } from './templates/template-one/template-one.component';
-import { TemplateTwoComponent } from './templates/template-two/template-two.component'
+import { TemplateTwoComponent } from './templates/template-two/template-two.component';
+import { SkillDisplayPipe } from './pipes/skill-display.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TemplateTwoComponent } from './templates/template-two/template-two.comp
     CurrentTemplateComponent,
     TemplatesComponent,
     TemplateOneComponent,
-    TemplateTwoComponent
+    TemplateTwoComponent,
+    SkillDisplayPipe
   ],
   imports: [
     BrowserModule,

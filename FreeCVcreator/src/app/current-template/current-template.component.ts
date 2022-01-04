@@ -10,7 +10,10 @@ import { Observable, Observer } from 'rxjs';
 import { HexBase64BinaryEncoding } from 'crypto';
 import { Url } from 'url';
 
-
+interface Skills {
+  skillset: string,
+  skill_range: number,
+}
 
 @Component({
   selector: 'app-current-template',
@@ -32,6 +35,7 @@ export class CurrentTemplateComponent {
   city:string
   state:string
   zip_code:string
+  skills: Array<Skills> = []
   profileEditor: string = ''
   jobs: Array<any> = []
 
@@ -75,6 +79,13 @@ export class CurrentTemplateComponent {
     this.tempBackground = tempBackground
     this.personalColor = personalColor
     this.personalBackground = personalBackground
+  }
+
+  addSkill(){
+    this.skills.push({
+      "skillset": null,
+      "skill_range": null
+    })
   }
 
   changedProfile(event: EditorChangeContent | EditorChangeSelection){

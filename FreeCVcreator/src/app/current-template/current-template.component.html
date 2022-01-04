@@ -101,7 +101,31 @@
           </form>
         </div>
 
-        <!-- Display second form page -->
+        <!-- Display third form page -->
+        <div class="carousel-item" data-bs-interval="99999999">
+          <form class="needs-validation" novalidate>
+            <span>
+              <h2>Skillset</h2>
+              <button class="btn btn-outline-success w-50 mt-2 mb-2" (click)="onExportPDF()">
+                Export CV as PDF
+              </button>
+            </span>
+            <button class="jobBtn" (click)="addSkill()">Add Skill</button>
+            <div *ngFor="let skill of skills; index as i">
+              <br>
+              <div class="row g-3 " *ngIf="skills">
+                <div class="col-md-6">
+                  <input type="text" class="form-control" name="skill.skillset" [(ngModel)]="skill.skillset">
+                </div>
+                <div class="col-md-6">
+                  <input type="range" class="form-range align-middle" step="5" name="skill.skill_range" [(ngModel)]="skill.skill_range">
+                </div>
+            </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Display forth form page -->
         <div class="carousel-item" data-bs-interval="99999999">
           <form class="row g-3 needs-validation" novalidate>
             <span>
@@ -226,7 +250,7 @@
         [first_name]="first_name" [last_name]="last_name" [email]="email"
         [phone_number]="phone_number" [city]="city"
         [state]="state" [zip_code]="zip_code"
-        [profileEditor]="profileEditor" [jobs]="jobs"
+        [profileEditor]="profileEditor" [jobs]="jobs" [skills]="skills"
         [tempColor]="tempColor" [tempBackground]="tempBackground"
         [personalColor]="personalColor" [personalBackground]="personalBackground">
       </app-template-one>
