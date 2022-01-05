@@ -12,7 +12,7 @@ import { Url } from 'url';
 
 interface Skills {
   skillset: string,
-  skill_range: number,
+  skill_range: any,
 }
 
 @Component({

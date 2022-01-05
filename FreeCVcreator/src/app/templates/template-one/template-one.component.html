@@ -23,11 +23,12 @@
       <p>{{ city }}/{{ state }}</p>
       <h5>Postal Code</h5>
       <p>{{ zip_code }}</p>
-      <hr>
+      <hr *ngIf="skills">
       <div *ngIf="skills">
         <div *ngFor="let skill of skills">
-          <h6> {{skill.skillset}} </h6>
-          <p class="progress-bar bg-success" [style.width]="skill.skill_range | skillDisplay">{{ skill.skill_range | skillDisplay}}</p>
+          <h6><b>{{skill.skillset}} </b></h6>
+          <p class="progress-bar bg-success" [style.width]="skill.skill_range | skillDisplay">
+              {{ skill.skill_range | skillDisplay}}</p>
         </div>
       </div>
     </div>

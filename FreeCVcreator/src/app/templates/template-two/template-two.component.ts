@@ -16,6 +16,7 @@ export class TemplateTwoComponent {
   @Input() city;
   @Input() state:string
   @Input() zip_code:string
+  @Input() skills: Array<any>
   @Input() profileEditor: string = ''
   @Input() jobs: Array<any> = []
 

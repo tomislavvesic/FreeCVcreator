@@ -38,6 +38,12 @@
             }
         }
 
+        .jobBtn{
+            width: 100%;
+            height: 35px;
+            border-radius: 20px;
+        }
+
         .color-picker{
             button{
                 width: 80%;
@@ -52,46 +58,49 @@
             .temp-color-button7{background: linear-gradient(-90deg, red 50%, yellow 50%);}
             .temp-color-button8{background: linear-gradient(-90deg, red 50%, yellow 50%);}
         }
-    
-        .jobBtn{
-            width: 100%;
-            height: 35px;
-            border-radius: 20px;
+
+        .skills{
+            .skill-range-input{
+                height: 0rem;
+            }
         }
     
-        .quill-editor{
-            padding: 0px;
-            color: white !important;
-            background-color: rgba(255, 255, 255, 0.7);
-        }
+        .profile-jobs{
     
-        .profile-container{
-            border: 3px solid white;
-            padding: 30px;
-            background: rgba(220, 220, 220, 0.2);
-            border-radius: 20px;
-        }
-    
-        .jobs-container{
-            position: relative;
-            padding-bottom: 10px;
-            
-            .btn-dark{
-                position: absolute;
-                top: 0;
-                right: 0;
-                border-radius: 15px;
+            .profile-container{
+                border: 3px solid white;
+                padding: 30px;
+                background: rgba(220, 220, 220, 0.2);
+                border-radius: 20px;
             }
 
-            .btn-danger{
-                position: absolute;
-                top: 0;
-                right: 0;
-                border-top-right-radius: 15px;
+            .quill-editor{
+                padding: 0px;
+                color: white !important;
+                background-color: rgba(255, 255, 255, 0.7);
             }
+        
+            .jobs-container{
+                position: relative;
+                padding-bottom: 10px;
+                
+                .btn-dark{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-radius: 15px;
+                }
 
-            .round-corners{
-                border-bottom-right-radius: 15px;
+                .btn-danger{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-top-right-radius: 15px;
+                }
+
+                .round-corners{
+                    border-bottom-right-radius: 15px;
+                }
             }
         }
 

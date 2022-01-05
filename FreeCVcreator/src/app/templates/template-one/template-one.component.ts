@@ -17,7 +17,7 @@ export class TemplateOneComponent {
   @Input() city;
   @Input() state:string
   @Input() zip_code:string
-  @Input() skills: Array<any> = []
+  @Input() skills: Array<any>
   @Input() profileEditor: string = ''
   @Input() jobs: Array<any> = []
 
