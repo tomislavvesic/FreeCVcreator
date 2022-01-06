@@ -1,11 +1,11 @@
 <div class="temp1 currentTemp smallScale"
-  [style.color]="tempColor"
-  [style.background]="tempBackground"
+  [style.color]="profile.tempColor"
+  [style.background]="profile.tempBackground"
   #selectedTemplate>
   <div class="row w-100">
     <div class="col-lg-4 personalInfo"
-    [style.color]="personalColor"
-    [style.background]="personalBackground">
+    [style.color]="profile.personalColor"
+    [style.background]="profile.personalBackground">
       <!-- TODO implement loading spinner in all templates -->
       <img *ngIf="display_profile_picture" 
       class="d-block w-50 img-thumbnail mt-4 p-0 profile-picture"
@@ -14,15 +14,15 @@
       >
       <hr *ngIf="display_profile_picture">
       <h5>Full Name</h5>
-      <p>{{ first_name }} {{ last_name }}</p>
+      <p>{{ profile.first_name }} {{ profile.last_name }}</p>
       <h5>Email Adress</h5>
-      <p>{{ email }}</p>
+      <p>{{ profile.email }}</p>
       <h5>Telephone Number</h5>
-      <p>{{ phone_number }}</p>
+      <p>{{ profile.phone_number }}</p>
       <h5>Town & City/State</h5>
-      <p>{{ city }}/{{ state }}</p>
+      <p>{{ profile.city }}/{{ profile.state }}</p>
       <h5>Postal Code</h5>
-      <p>{{ zip_code }}</p>
+      <p>{{ profile.zip_code }}</p>
       <hr *ngIf="skills">
       <div *ngIf="skills">
         <div *ngFor="let skill of skills">

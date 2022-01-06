@@ -14,19 +14,19 @@
               <tr>
                 <td><label class="form-label">Template Text Color</label></td>
                 <td><input type="color" class="form-control form-control-color"
-                name="tempColor" [(ngModel)]="tempColor"></td>
+                name="profile.tempColor" [(ngModel)]="profile.tempColor"></td>
                 <td><label class="form-label">Personal Text Color</label></td>
                 <td><input type="color" class="form-control form-control-color"
-                name="personalColor" [(ngModel)]="personalColor"></td>
+                name="profile.personalColor" [(ngModel)]="profile.personalColor"></td>
               </tr>
               <br>
               <tr>
                 <td><label class="form-label">Template Background Color</label></td>
                 <td><input type="color" class="form-control form-control-color"
-                name="tempBackground" [(ngModel)]="tempBackground"></td>
+                name="profile.tempBackground" [(ngModel)]="profile.tempBackground"></td>
                 <td><label class="form-label">Personal Background Color</label></td>
                 <td><input type="color" class="form-control form-control-color"
-                name="personalBackground" [(ngModel)]="personalBackground"></td>
+                name="profile.personalBackground" [(ngModel)]="profile.personalBackground"></td>
               </tr>
             </table>
             <hr class="mt-5">
@@ -65,11 +65,11 @@
             </span>
             <div class="col-md-6">
               <label class="form-label">First name</label>
-              <input type="text" class="form-control" name="first_name" [(ngModel)]="first_name" required>
+              <input type="text" class="form-control" name="profile.first_name" [(ngModel)]="profile.first_name" required>
             </div>
             <div class="col-md-6">
               <label class="form-label">Last name</label>
-              <input type="text" class="form-control" name="last_name" [(ngModel)]="last_name" required>
+              <input type="text" class="form-control" name="profile.last_name" [(ngModel)]="profile.last_name" required>
             </div>
             <div class="mb-12">
               <label class="form-label">Profile Picture</label>
@@ -79,24 +79,24 @@
               <label class="form-label">Email</label>
               <div class="input-group has-validation">
                 <span class="input-group-text">@</span>
-                <input type="text" class="form-control" name="email" [(ngModel)]="email" required>
+                <input type="text" class="form-control" name="profile.email" [(ngModel)]="profile.email" required>
               </div>
             </div>
             <div class="col-md-6">
               <label class="form-label">Phone Number</label>
-              <input type="text" class="form-control" name="phone_number" [(ngModel)]="phone_number" required>
+              <input type="text" class="form-control" name="profile.phone_number" [(ngModel)]="profile.phone_number" required>
             </div>
             <div class="col-md-5">
               <label class="form-label">City</label>
-              <input type="text" class="form-control" name="city" [(ngModel)]="city" required>
+              <input type="text" class="form-control" name="profile.city" [(ngModel)]="profile.city" required>
             </div>
             <div class="col-md-4">
               <label class="form-label">State</label>
-              <input type="text" class="form-control" name="state" [(ngModel)]="state" required>
+              <input type="text" class="form-control" name="profile.state" [(ngModel)]="profile.state" required>
             </div>
             <div class="col-md-3">
               <label class="form-label">Zip Code</label>
-              <input type="text" class="form-control" name="zip_code" [(ngModel)]="zip_code">
+              <input type="text" class="form-control" name="profile.zip_code" [(ngModel)]="profile.zip_code">
             </div>
           </form>
         </div>
@@ -243,25 +243,19 @@
 
   <div class="col-xl-5 col-md-12">
     <div *ngIf="selectedTemp; else noSelectedTemp">
+      <!-- template1 -->
       <app-template-one #selectedTemplateBody
         *ngIf="selectedTemp === 'temp1'"
         [display_profile_picture]="display_profile_picture"
-        [first_name]="first_name" [last_name]="last_name" [email]="email"
-        [phone_number]="phone_number" [city]="city"
-        [state]="state" [zip_code]="zip_code"
-        [profileEditor]="profileEditor" [jobs]="jobs" [skills]="skills"
-        [tempColor]="tempColor" [tempBackground]="tempBackground"
-        [personalColor]="personalColor" [personalBackground]="personalBackground">
+        [profile]="profile"
+        [profileEditor]="profileEditor" [jobs]="jobs" [skills]="skills">
       </app-template-one>
+      <!-- template2 -->
       <app-template-two #selectedTemplateBody
         *ngIf="selectedTemp === 'temp2'"
         [display_profile_picture]="display_profile_picture"
-        [first_name]="first_name" [last_name]="last_name" [email]="email"
-        [phone_number]="phone_number" [city]="city"
-        [state]="state" [zip_code]="zip_code"
-        [profileEditor]="profileEditor" [jobs]="jobs" [skills]="skills"
-        [tempColor]="tempColor" [tempBackground]="tempBackground"
-        [personalColor]="personalColor" [personalBackground]="personalBackground">
+        [profile]="profile"
+        [profileEditor]="profileEditor" [jobs]="jobs" [skills]="skills">
       </app-template-two>
     </div>
     
