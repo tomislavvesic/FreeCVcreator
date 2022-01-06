@@ -246,15 +246,13 @@
       <!-- template1 -->
       <app-template-one #selectedTemplateBody
         *ngIf="selectedTemp === 'temp1'"
-        [display_profile_picture]="display_profile_picture"
-        [profile]="profile"
+        [display_profile_picture]="display_profile_picture" [profile]="profile"
         [profileEditor]="profileEditor" [jobs]="jobs" [skills]="skills">
       </app-template-one>
       <!-- template2 -->
       <app-template-two #selectedTemplateBody
         *ngIf="selectedTemp === 'temp2'"
-        [display_profile_picture]="display_profile_picture"
-        [profile]="profile"
+        [display_profile_picture]="display_profile_picture" [profile]="profile"
         [profileEditor]="profileEditor" [jobs]="jobs" [skills]="skills">
       </app-template-two>
     </div>
