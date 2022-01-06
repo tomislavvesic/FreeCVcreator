@@ -33,23 +33,23 @@
             <h5>Below are proposed colorings for templates</h5>
             <div class="row mt-4">
               <div class="col"><button class="btn btn-sm btn-light temp-color-button1"
-                (click)="changeTempColor('#000000', '#E6E6FA', '#ffffff', '#000044')"> Test </button></div>
+                (click)="changeTempColor('#000000', '#E6E6FA', '#ffffff', '#000044')"><b>+</b></button></div>
               <div class="col"><button class="btn btn-sm btn-light temp-color-button2"
-                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')"> Test </button></div>
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')"><b>+</b></button></div>
               <div class="col"><button class="btn btn-sm btn-light temp-color-button3"
-                (click)="changeTempColor('#be1919', '#fff0f0', '#be1919', '#e59999')" > Test </button></div>
+                (click)="changeTempColor('#be1919', '#fff0f0', '#be1919', '#e59999')" ><b>+</b></button></div>
               <div class="col"><button class="btn btn-sm btn-light temp-color-button4"
-                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" > Test </button></div>
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" ><b>+</b></button></div>
             </div>
             <div class="row mt-4">
               <div class="col"><button class="btn btn-sm btn-light temp-color-button5"
-                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" > Test </button></div>
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" ><b>+</b></button></div>
               <div class="col"><button class="btn btn-sm btn-light temp-color-button6"
-                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" > Test </button></div>
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" ><b>+</b></button></div>
               <div class="col"><button class="btn btn-sm btn-light temp-color-button7"
-                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" > Test </button></div>
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" ><b>+</b></button></div>
               <div class="col"><button class="btn btn-sm btn-light temp-color-button8"
-                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" > Test </button></div>
+                (click)="changeTempColor('#000000', '#ffffff', '#000000', '#dbd7d7')" ><b>+</b></button></div>
             </div>
           </form>
         </div>
@@ -115,11 +115,11 @@
               <br>
               <div class="row g-3 " *ngIf="skills">
                 <div class="col-md-6">
-                  <input type="text" class="form-control" name="skill.skillset" [(ngModel)]="skill.skillset">
+                  <input type="text" class="form-control" name="skill.skillset{{i}}" [(ngModel)]="skill.skillset">
                 </div>
                 <div class="col-md-6">
                   <input type="range" class="form-range skill-range-input" step="5"
-                         name="skill.skill_range" [(ngModel)]="skill.skill_range">
+                         name="skill.skill_range{{i}}" [(ngModel)]="skill.skill_range">
                 </div>
             </div>
             </div>
@@ -158,17 +158,15 @@
                     <label class="form-label">Job Title</label>
                     <input type="text"
                     class="form-control"
-                    name="job.jobTitle"
+                    name="job.jobTitle{{i}}"
                     [(ngModel)]="job.jobTitle"
                     required>
                   </div>
                   <div class="col-md-6">
                     <label class="form-label">Company Name</label>
                     <input type="text"
-                    value="John"
-                    name="John"
                     class="form-control"
-                    name="job.companyName"
+                    name="job.companyName{{i}}"
                     [(ngModel)]="job.companyName"
                     required>
                   </div>
@@ -180,7 +178,7 @@
                       <div class="col">
                         <input type="date"
                         class="form-control text-center"
-                        name="job.fromDate"
+                        name="job.fromDate{{i}}"
                         [(ngModel)]="job.fromDate"
                         aria-label="First name">
                       </div>
@@ -190,7 +188,7 @@
                       <div class="col">
                         <input type="date"
                         class="form-control text-center"
-                        name="job.toDate"
+                        name="job.toDate{{i}}"
                         [(ngModel)]="job.toDate"
                         aria-label="Last name">
                       </div> 
