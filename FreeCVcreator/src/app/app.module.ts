@@ -17,6 +17,7 @@ import { TemplateOneComponent } from './templates/template-one/template-one.comp
 import { TemplateTwoComponent } from './templates/template-two/template-two.component';
 import { SkillDisplayPipe } from './pipes/skill-display.pipe';
 
+// TODO add to environment variables
 const firebaseConfig = {
   apiKey: "AIzaSyB6yprhbamHlaPhybBumoVKyiMJQKqRngg",
   authDomain: "freeonlinecvmaker.firebaseapp.com",
