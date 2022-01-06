@@ -68,8 +68,8 @@ export class CurrentTemplateComponent {
     }
     this.quillStyles = {
       "height":"150px",
-      "background-color":"rgba(33, 37, 41, 1)",
-      "color":"rgb(220, 220, 220)",
+      "background-color":"rgba(220, 220, 220, 1)",
+      "color":"rgb(30, 30, 30)",
       "quill-editor":"20px"
     }
   }
