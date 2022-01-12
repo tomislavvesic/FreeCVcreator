@@ -7,7 +7,21 @@
         border-top-right-radius: 80px;
         border-bottom-right-radius: 80px;
         overflow: hidden;
-    
+        
+        .web-logo{
+            width: 32px;
+        }
+
+        .gh{
+            border-radius: 100%;
+            background-color: black;
+        }
+
+        .ln{
+            border-radius: 3px;
+            background-color: white;
+        }
+
         .profile-picture{
             border-radius: 100%;
             border: 5px lavender solid;

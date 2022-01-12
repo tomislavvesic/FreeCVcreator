@@ -105,11 +105,37 @@
         <div class="carousel-item skills" data-bs-interval="99999999">
           <form class="needs-validation" novalidate>
             <span>
-              <h2>Skillset</h2>
+              <h2>Pages & Skillset</h2>
               <button class="btn btn-outline-success w-50 mt-2 mb-2" (click)="onExportPDF()">
                 Export CV as PDF
               </button>
             </span>
+            <br>
+            <form>
+              <div class="row">
+                <div class="col-2"><img class="web-logo gh" src="/assets/images/GitHub-Mark-Light-32px.png"></div>
+                <div class="col-10">
+                  <input type="text" class="form-control" name="profile.github"
+                         placeholder="GitHub URL" [(ngModel)]="profile.github">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2"><img class="web-logo ln" src="/assets/images/In-Blue-Logo.png.original.png"></div>
+                <div class="col-10">
+                  <input type="text" class="form-control" name="profile.linkedln"
+                         placeholder="LinkedIn URL" [(ngModel)]="profile.linkedln">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2"><img class="web-logo" src="/assets/images/website-logo.png"></div>
+                <div class="col-10">
+                  <input type="text" class="form-control" name="profile.website"
+                         placeholder="Website URL" [(ngModel)]="profile.website">
+                </div>
+              </div>
+            </form>
+            <br>
+            <hr>
             <button class="jobBtn mt-3" (click)="addSkill()">Add Skill</button>
             <div *ngFor="let skill of skills; index as i">
               <br>
@@ -135,8 +161,8 @@
                 Export CV as PDF</button>
             </span>
             <div class="profile-container">
-              <div class="col-md-12 quill-editor">
-                <quill-editor class="quill-editor"
+              <div class="col-md-12 quill-editor" style="border: none !important;">
+                <quill-editor style="border: none !important;"
                 [modules]="modules"
                 [styles]="quillStyles"
                 (onEditorChanged)="changedProfile($event)">

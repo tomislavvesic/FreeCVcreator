@@ -60,6 +60,20 @@
         }
 
         .skills{
+            .web-logo{
+                width: 32px;
+            }
+    
+            .gh{
+                border-radius: 100%;
+                background-color: black;
+            }
+    
+            .ln{
+                border-radius: 3px;
+                background-color: white;
+            }
+            
             .skill-range-input{
                 height: 0rem;
             }
@@ -78,6 +92,20 @@
                 padding: 0px;
                 color: white !important;
                 background-color: rgba(255, 255, 255, 0.7);
+                border-bottom-right-radius: 15px;
+                border-bottom-left-radius: 15px;
+            }
+
+            .ql-toolbar .ql-stroke {
+                border-radius: 15px;
+            }
+            
+            .ql-toolbar .ql-fill {
+                border-radius: 15px;
+            }
+            
+            .ql-toolbar .ql-picker {
+                border-radius: 15px;
             }
         
             .jobs-container{

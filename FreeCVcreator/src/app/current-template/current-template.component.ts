@@ -40,6 +40,10 @@ export class CurrentTemplateComponent {
     tempBackground: '#FFFFFF',
     personalColor: '#FFFFFF',
     personalBackground: '#000044',
+    // Variables used for user sites
+    github: '',
+    linkedln: '',
+    website: '',
   }
   display_profile_picture: Observable<HexBase64BinaryEncoding>
   skills: Array<Skills> = []
@@ -56,7 +60,7 @@ export class CurrentTemplateComponent {
     this.modules = {
       toolbar: [
         ['bold', 'italic', 'underline'],
-      
+        ['link', 'image'],
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
         [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
         
@@ -71,7 +75,9 @@ export class CurrentTemplateComponent {
       "height":"150px",
       "background-color":"rgba(220, 220, 220, 1)",
       "color":"rgb(30, 30, 30)",
-      "quill-editor":"20px"
+      "quill-editor":"20px",
+      "border-bottom-right-radius": "15px",
+      "border-bottom-left-radius": "15px"
     }
   }
 

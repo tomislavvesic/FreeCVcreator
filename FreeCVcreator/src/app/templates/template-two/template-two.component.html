@@ -9,9 +9,20 @@
         <img *ngIf="display_profile_picture" 
         class="d-block img-thumbnail mt-2 p-0 profile-picture"
         [src]="display_profile_picture | async"
-        alt="Profile Picture"
-        >
+        alt="Profile Picture">
         <hr *ngIf="display_profile_picture">
+        <div class="row" style="width: 80%;">
+          <div class="col" *ngIf="profile.github"><a target="_blank" [href]="profile.github">
+            <img class="web-logo gh" src="/assets/images/GitHub-Mark-Light-32px.png"></a>
+          </div>
+          <div class="col" *ngIf="profile.linkedln"><a target="_blank" [href]="profile.linkedln">
+            <img class="web-logo ln" src="/assets/images/In-Blue-Logo.png.original.png"></a>
+          </div>
+          <div class="col" *ngIf="profile.website"><a target="_blank" [href]="profile.website">
+            <img class="web-logo wb" src="/assets/images/website-logo.png"></a>
+          </div>
+        </div>
+        <hr *ngIf="profile.github || profile.linkedln || profile.website">
         <h5>Full Name</h5>
         <p>{{ profile.first_name }} {{ profile.last_name }}</p>
         <h5>Email Adress</h5>
