@@ -9,21 +9,10 @@ export class TemplateTwoComponent {
   @ViewChild('selectedTemplate') selectedTemplate:ElementRef;
 
   @Input() display_profile_picture: any
-  @Input() first_name: string
-  @Input() last_name: string
-  @Input() email:string
-  @Input() phone_number:string
-  @Input() city;
-  @Input() state:string
-  @Input() zip_code:string
+  @Input() profile: any
   @Input() skills: Array<any>
   @Input() profileEditor: string = ''
   @Input() jobs: Array<any> = []
-
-  @Input() tempColor: string = 'black'
-  @Input() tempBackground: string = 'white'
-  @Input() personalColor: string = 'white'
-  @Input() personalBackground: string = '#000044'
 
   constructor() { }
 }

@@ -4,7 +4,7 @@ import { ElementRef, Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TemplateRelatedService {
-  chooseTemplate: string = ''
+  chooseTemplate: string = 'temp1'
 
   constructor() { }
 }

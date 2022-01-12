@@ -27,23 +27,28 @@ export class CurrentTemplateComponent {
   @ViewChild('selectedTemplateBody') selectedTemplateBody;
   form_profile_picture: HTMLImageElement
 
+  profile = {
+    first_name: '',
+    last_name: '',
+    email:'',
+    phone_number:'',
+    city:'',
+    state:'',
+    zip_code:'',
+    // Variables used for chaning color of templates
+    tempColor: '#000000',
+    tempBackground: '#FFFFFF',
+    personalColor: '#FFFFFF',
+    personalBackground: '#000044',
+    // Variables used for user sites
+    github: '',
+    linkedln: '',
+    website: '',
+  }
   display_profile_picture: Observable<HexBase64BinaryEncoding>
-  first_name: string
-  last_name: string
-  email:string
-  phone_number:string
-  city:string
-  state:string
-  zip_code:string
   skills: Array<Skills> = []
   profileEditor: string = ''
   jobs: Array<any> = []
-
-  // Variables used for chaning color of templates
-  tempColor: string = '#000000'
-  tempBackground: string = '#FFFFFF'
-  personalColor: string = '#FFFFFF'
-  personalBackground: string = '#000044'
 
   // Quill editor options
   modules:Object = {}
@@ -55,7 +60,7 @@ export class CurrentTemplateComponent {
     this.modules = {
       toolbar: [
         ['bold', 'italic', 'underline'],
-      
+        ['link', 'image'],
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
         [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
         
@@ -70,15 +75,17 @@ export class CurrentTemplateComponent {
       "height":"150px",
       "background-color":"rgba(220, 220, 220, 1)",
       "color":"rgb(30, 30, 30)",
-      "quill-editor":"20px"
+      "quill-editor":"20px",
+      "border-bottom-right-radius": "15px",
+      "border-bottom-left-radius": "15px"
     }
   }
 
   changeTempColor(tempColor ,tempBackground ,personalColor ,personalBackground){
-    this.tempColor = tempColor
-    this.tempBackground = tempBackground
-    this.personalColor = personalColor
-    this.personalBackground = personalBackground
+    this.profile.tempColor = tempColor
+    this.profile.tempBackground = tempBackground
+    this.profile.personalColor = personalColor
+    this.profile.personalBackground = personalBackground
   }
 
   addSkill(){
