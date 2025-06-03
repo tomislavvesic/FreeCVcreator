@@ -12,7 +12,7 @@ export class TemplatesComponent {
     private templateService: TemplateRelatedService
   ) { }
 
-  chooseTemp(event){
-    this.templateService.chooseTemplate = event
+  chooseTemp(template: string): void{
+    this.templateService.chooseTemplate = template;
   }
 }
