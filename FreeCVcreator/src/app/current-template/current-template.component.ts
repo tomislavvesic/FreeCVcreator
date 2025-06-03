@@ -88,39 +88,39 @@ export class CurrentTemplateComponent {
     this.profile.personalBackground = personalBackground
   }
 
-  addSkill(){
+  addSkill(): void{
     this.skills.push({
       "skillset": null,
       "skill_range": null
     })
   }
 
-  changedProfile(event: EditorChangeContent | EditorChangeSelection){
+  changedProfile(event: EditorChangeContent | EditorChangeSelection): void{
     this.profileEditor = event['editor']['root']['innerHTML']
   }
 
-  addJob(){
+  addJob(): void{
     this.jobs.push({
       "jobsEditor": null,
       "expanded": true
     })
   }
 
-  jobToggle(index){
+  jobToggle(index: number): void{
     let job = this.jobs[index]
     job.expanded = !job.expanded
   }
 
-  changedJobs(event: EditorChangeContent | EditorChangeSelection, index){
+  changedJobs(event: EditorChangeContent | EditorChangeSelection, index: number): void{
     let job = this.jobs[index]
     job.jobsEditor = event['editor']['root']['innerHTML']
   }
 
-  deleteJob(index){
+  deleteJob(index: number): void{
     this.jobs.splice(index,1)
   }
 
-  toDataURL(url, callback) {
+  toDataURL(url: string, callback: (data: string | ArrayBuffer | null) => void): void {
     var xhr = new XMLHttpRequest();
     xhr.onload = function() {
       var reader = new FileReader();
@@ -134,7 +134,7 @@ export class CurrentTemplateComponent {
     xhr.send();
   }
 
-  onProfilePicture(event){
+  onProfilePicture(event: any): void{
     this.form_profile_picture = event.target.files[0]
     let filePath = "/images/" + Math.random() + this.form_profile_picture.id
     const fileRef = this.fireStorage.ref(filePath)
@@ -147,7 +147,7 @@ export class CurrentTemplateComponent {
         .subscribe((url: Url)=>{
           let base64img
           // Turn Firebase URL to base64. PDF download only uses base64 and cannot download URL
-          this.toDataURL(url, function(dataUrl) {
+          this.toDataURL(url.toString(), function(dataUrl) {
             base64img = dataUrl
           })
 

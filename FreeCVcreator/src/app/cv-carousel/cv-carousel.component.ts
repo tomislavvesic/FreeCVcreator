@@ -14,8 +14,8 @@ export class CvCarouselComponent {
     public router: Router
   ) { }
 
-  chooseTemp(event){
-    this.templateService.chooseTemplate = event
+  chooseTemp(template: string): void{
+    this.templateService.chooseTemplate = template;
     this.router.navigate(['template']);
   }
 }

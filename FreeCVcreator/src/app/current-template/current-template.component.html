@@ -281,6 +281,12 @@
         [display_profile_picture]="display_profile_picture" [profile]="profile"
         [profileEditor]="profileEditor" [jobs]="jobs" [skills]="skills">
       </app-template-two>
+      <!-- template3 -->
+      <app-template-three #selectedTemplateBody
+        *ngIf="selectedTemp === 'temp3'"
+        [display_profile_picture]="display_profile_picture" [profile]="profile"
+        [profileEditor]="profileEditor" [jobs]="jobs" [skills]="skills">
+      </app-template-three>
     </div>
     
     <ng-template #noSelectedTemp>
